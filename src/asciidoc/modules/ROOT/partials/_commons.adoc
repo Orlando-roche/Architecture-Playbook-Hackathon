@@ -1,0 +1,46 @@
+// commonly used terms defined as variable
+:org-name: CS-CoE
+:org-full-name: Computational Sciences Center of Excellence
+
+// No changes below required.
+// BEGIN Antora specific
+// Configures parallel building with or without Antora.
+// access resources via path if not running Antora
+ifndef::env-site[]
+// {moduledir} must be defined before including this file
+ifndef::imagesdir[]
+:imagesdir: {moduledir}/images
+endif::imagesdir[]
+:attachmentsdir: {moduledir}/attachments
+:examplesdir: {moduledir}/examples
+:partialsdir: {moduledir}/partials
+:pagesdir: {moduledir}/pages
+endif::env-site[]
+// access resources using Antora's ID if running Antora
+ifdef::env-site[]
+ifndef::imagesdir[]
+:imagesdir: image$
+endif::imagesdir[]
+:attachmentsdir: attachment$
+:examplesdir: example$
+:partialsdir: partial$
+:pagesdir: page$
+endif::env-site[]
+// END Antora specific
+
+ifdef::env-idea[]
+:videosprefix: {imagesdir}/
+endif::env-idea[]
+ifndef::env-idea[]
+:videosprefix:
+endif::env-idea[]
+
+// tag::diagram-config[]
+ifdef::env-site[]
+// We are using Antora.
+// SVG is the kroki-default-format by default (which is good), and we want inline SVG.
+:kroki-default-options: inline
+// In addition, allow-uri-read must be set in the playbook or from the command line,
+// see https://docs.asciidoctor.org/asciidoc/latest/attributes/document-attributes-reference/#security-attributes.
+endif::env-site[]
+// end::diagram-config[]

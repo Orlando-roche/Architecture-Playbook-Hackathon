@@ -1,0 +1,25 @@
+:moduledir: ..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= Architecture Community
+:page-content-owner-email: alex.weigel@roche.com
+
+Our architectural practice is enabled by the dedicated Architecture group and extended throughout the organization by our Architecture Catalysts, ensuring that we maintain architectural coherence while embedding strategic alignment across all Research and Early Development domains.
+
+== The Architecture Group
+
+The core Architecture group is part of CSCoE-DDC organization and oversees the architectural direction and governance within the Computational Sciences Center of Excellence (CS-CoE).
+
+image:team_core_architecture.png[Architecture Catalyst]
+
+You can contact the members of the group by eMail: mailto:CSCoE-DDC-EA-d@gene.com[]
+
+== Architecture Catalysts
+
+The Catalysts serve as the first point of contact between their respective departments and the Architecture group, promoting architectural alignment and ensuring that best practices are followed. They are members of the Architecture Council and the Architecture Review Board.
+
+image:team_architecture_catalyst.png[Architecture Catalyst]
+
+== Contact
+
+For general inquiries or to connect with the broader organization's representatives, please reach out to the mailto:CSCOE-ARCHITECTURE-CATALYST@msxdl.roche.com[Architecture Catalyst Council].

@@ -1,0 +1,4 @@
+:moduledir: ..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= Identity and Access Management

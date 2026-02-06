@@ -1,0 +1,114 @@
+:moduledir: ..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= Developer Quickstart
+:page-content-owner-email: jon.fuller@roche.com
+
+This document is aimed to give a quick overview of some of the useful tools and platforms for developers at Roche, so that new joiners can get started developing effectively. We’d recommend that you take this as a starting point, and ask around if a tool or platform is missing. The goal is to strike a balance between effective personal workflow, and gaining from critical mass working in a similar way.
+
+The Roche Dev Hub gives some information about platforms that you could consider defaults to use. Of course there may be a reason to need something different, but the linked platforms are well documented, well supported and the easiest place to start. When using these tools and platforms you are most likely to find a colleague, or example to help you with any issues arise.
+
+== DevHub
+
+[quote,'https://devhub.roche.com/[DevHub]']
+____
+We provide a platform with all the components and capabilities required for Development teams working across Roche to build software faster, better and with embedded security, through our one stop shop Internal Developer Portal
+____
+
+
+E.g. https://code.roche.com[Gitlab], https://eu.repository.roche.com[Artifactory], Docker, Sonarqube and other relevant platforms are detailed.
+There is also a handy TechRadar, and docs on several relevant topics.
+More details on Dev Hub https://sites.google.com/roche.com/devsecops-enablement?pli=1[here].
+
+In addition to the details on the site, there are several other useful resources:
+
+* https://docs.google.com/document/d/19mAWeKsTwc5JAASp9RqsMQcleOw8ecPd-2OgtieCTWw/edit[Developer Experience Summary] 
+* https://docs.google.com/document/d/1S4-_3x2JqwaynQkjOO7M95P2k8RwDD-iBbVdQq98U04/edit#heading=h.ce4rk8b7azd8[Embedded Security and Compliance]
+* https://docs.google.com/document/d/1h6nBoxpoaahAkl0XMKcrZYD1ZFotQrpfU0Vo5JeCQDg/edit#heading=h.86bkllc16hdy[Development Acceleration]
+
+
+== Open Source @ Roche
+
+The following https://opensource.roche.com/policies/using-external-open-source-code-within-roche[link] gives details on how Open Source can be used at Roche. Furthermore linked from that page are details on contributing to Open Source projects.
+
+== Inner Source @ Roche
+
+[quote, 'https://innersource.roche.com/[Innersource]']
+____
+A culture of sharing, collaboration and contribution. Develop software transparently facing a Roche wide development community. Reuse already existing solutions.
+____
+
+== Roche Design System
+The https://rdesignsystem.roche.com/[Roche Design System] contains resources for following the Roche branding.
+ 
+
+== Windows / Mac
+
+Recommendation for when to choose one v. the other?
+
+== Windows Sub-system for Linux
+On Windows you probably need WSL2. 
+Install with the [standard instructions]. 
+You may need to do some more nonsense, to get internal connectivity to work as expected, see https://overflow.roche.com/t/external-connectivity-from-wsl-2/7264/26[here]. 
+Beware WSL will eat your hard drive, especially when used with Docker! https://rochewiki.roche.com/confluence/pages/viewpage.action?pageId=709528197[See the following to reclaim space]
+
+== IDEs
+
+You need something more powerful than Vim - is that possible...?
+
+* *Jetbrains Ultimate* license is available, for e.g. IntelliJ - recommended for Java, xref:knowledge_base:jetbrains-licenses.adoc[details here].
+* *VSCode* - make sure to review the extensions that you use (acceptable license - see above, and reputable source).
+* https://www.oracle.com/database/sqldeveloper/[SQL Developer]
+
+== Starters, Archetypes and example projects
+
+* https://code.roche.com/fullerj8/poetry-starter[Cookiecutter Python Poetry project] (work in progress) to work with Python in VSCode in a Docker container on Windows/Mac. 
+
+== Docker
+
+Docker Desktop, and Docker Hub require a license to use. Roche has access to these licenses. The docs are https://penguins.pages.roche.com/solutions-wiki/Docker/docker/[here], and the link to the license application is https://devhub.roche.com/docs/default/System/fk-ef-docker-business[there].
+
+You might prefer to use Rancher as a front-end to docker-ce (docker engine).
+
+== Secrets scanning possibilities
+
+There is a handy discussion of https://overflow.roche.com/t/secrets-detection-solutions/16292[how to scan for secrets in your code/repos].
+
+== Help!
+
+=== Copilot (code assistant)
+
+Who writes their own code anymore... You can apply for a Copilot license https://roche.service-now.com/rose?id=sc_cat_item&sys_id=6212c26c87443dd4f9f9a9f30cbb3588[here] (agree with you line manager first).
+
+Our colleagues in PMDA produced a https://docs.google.com/presentation/d/1e_30-pS8Abh42Qob5KTRr-P0JgAqVl1uxBNA4b3LEsY/edit#slide=id.g2e704978aea_0_2[handy training], covering e.g. what C-level of data can be used.
+
+https://rdchat.roche.com/[R&D Chat] or https://rochechat.roche.com/[RocheChat] are possible cost-effective alternatives for occasional use.
+
+=== Dev gSpaces
+
+Unbelievably, LLMs can't solve all of our problems. In case you need some help from a human, you might find it in the following gSpaces.
+
+There are several useful gSpaces for discussing tech related topics:
+
+* https://chat.google.com/room/AAAAdATuNrw?cls=7[pRED D&A Tech Topics]]
+* https://chat.google.com/room/AAAALNQchNQ?cls=7[CoP Architecture]
+* https://chat.google.com/room/AAAAUNmLIkg?cls=7[pRED Code Club]
+* https://chat.google.com/room/AAAAfp03KV4?cls=7[pyRoche: Python User Group]
+* https://chat.google.com/room/AAAAvxQj8bk?cls=7[Dev CoP]
+* https://chat.google.com/room/AAAAeCstSqI?cls=7[Data CoP]
+* https://chat.google.com/room/AAAAIUiugEo?cls=7[DevOps Days]
+* https://chat.google.com/room/AAAAkR1jIdE?cls=7[Security CoP]
+
+
+=== Internal Stackoverflow (Roverflow)
+
+An internal version of https://overflow.roche.com/[StackOverflow]
+
+=== OneDoc
+
+* https://onedoc.pages.roche.com/[Tech docs for D&A]. 
+* https://onedoc.pages.roche.com/core/docs/[Documentation on writing OneDoc].
+
+== Super comprehensive details
+
+See the https://code.roche.com/one-d-ai/technical-wiki/-/wikis/guidelines/Starter-Kit[following link] for a tonne of extra useful information.

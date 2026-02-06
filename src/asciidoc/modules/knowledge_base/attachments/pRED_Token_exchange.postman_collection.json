@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "acb4377c-a2b4-4d5c-b3a6-76e81c7f71b1",
+		"name": "pRED Token exchange",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12133955"
+	},
+	"item": [
+		{
+			"name": "Token exchange (credentials)",
+			"protocolProfileBehavior": {
+				"strictSSL": true
+			},
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "{{clientId}}",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "{{clientSecret}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "urn:ietf:params:oauth:grant-type:token-exchange",
+							"type": "text"
+						},
+						{
+							"key": "subject_token",
+							"value": "The access token from the other client",
+							"type": "default"
+						},
+						{
+							"key": "resource",
+							"value": "https://predtokenexchange",
+							"type": "text"
+						},
+						{
+							"key": "subject_token_type",
+							"value": "urn:ietf:params:oauth:token-type:jwt",
+							"type": "default"
+						}
+					]
+				},
+				"url": {
+					"raw": "https://wamqa.roche.com/as/token.oauth2",
+					"protocol": "https",
+					"host": [
+						"wamqa",
+						"roche",
+						"com"
+					],
+					"path": [
+						"as",
+						"token.oauth2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

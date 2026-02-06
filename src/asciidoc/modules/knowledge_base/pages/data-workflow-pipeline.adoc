@@ -1,0 +1,86 @@
+:moduledir: ..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= Data Workflow Documentation Best Practices
+:page-content-owner-email: thomas.thies@roche.com
+
+== Objective 
+This documents aims to highlight the best practices around the miniminimal information to be provided as data workflow/pipeline documentation as defined in the Data & Workflows Engineering Capability Circle.
+
+* The documentation of the workflow should be readable by end-users without having to access the code
+* It needs to be accessible by everyone, not only by users of the code (findability)
+* In-scope of this best practice are automated or semi-automated computational workflows such as data processing/transformation pipelines
+* Out-of-scope are manual or business workflows (e.g. assay/experiment protocols, etc.)
+
+//[cols="1,1,1"]
+[cols="3*",options="header"]
+|===
+|Information
+|Purpose
+|Mandatory vs. Optional
+
+|Title → Comprehensive but crisp and unambiguous title
+|
+|M
+
+|Version → Current version of the Workflow using Semantic Versioning Scheme (https://semver.org/)
+|E.g. first release v1, small change v1.1., larger change v2… for versions that are made available to other users
+|M
+
+|Version History/Changelog
+|
+|O
+
+|Workflow Owner/Maintainer ((team) name and email)
+|
+|M
+
+|Description → Brief abstract about the purpose of the workflow extending the title (e.g. modalities, types of data, outputs of the workflow) 
+|
+|M
+
+|Steps of workflow including description (component/software tool used, version of tool, command line executed, including manual steps)
+|In brief, this can be a more holistic and detailed description. It should inform the reader what is used.
+|M
+
+|Diagram of the workflow
+|
+|O
+
+|Tags or keywords (e.g. data types)
+|For searching in case a workflow registry is available, independent of the used platform
+|O
+
+|Workflow Category/Type of Analysis → (type (preprocessing, QC), technology (single cell, rnaseq, image processing))
+|Existing in RTS, genomic, transcriptomic, single-cell, imaging, other/to be defined -> as drop-down/selection?
+|M
+
+|Tools/programming language (Python, Pipeline Pilot, KNIME, etc)
+|If a user wants to search for workflows created in a tool he/she already knows
+|O
+
+|Source code location or external documentation (“How to” of workflow)
+|Link or link to Wiki page
+|M
+
+|Inputs including type (e.g. type of data or file format etc.) and description
+|
+|M
+
+|Outputs including description/type
+|
+|M
+
+|Is workflow non-restricted or requires access? (if requires access, how to apply for access)
+|
+|M
+
+|Any licensing regarding the tools used
+|
+|O
+
+|Any licensing regarding the data (for which the workflow was created; if this is unclear reach out to DWE circle)
+|
+|O
+
+|=== 

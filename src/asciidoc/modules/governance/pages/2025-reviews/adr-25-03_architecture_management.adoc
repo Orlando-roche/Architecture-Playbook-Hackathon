@@ -1,0 +1,139 @@
+:moduledir: ../..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= ADR-25-03: CS-CoE Architecture Management Tool
+
+[cols="1,3"]
+|===
+|Status |Draft
+|Impact |Medium
+|Demand Owner |Alex Weigel
+|ADR Contributors |Saima Sherazi, Anish Kejariwal
+|Informed |Architecture Council
+|Publication Date |November 11, 2025
+|===
+
+== 📗 Background
+
+The Computational Sciences Center of Excellence (CS-CoE) was established to unify and modernize the computation and data ecosystems across Roche’s Research and Early Development (RED) organizations, including pRED and gRED.
+Within this context, the Architecture function plays a pivotal role in ensuring a cohesive, scalable and flexible technology landscape that enables seamless data flow, integration and AI-driven scientific innovation.
+
+To effectively manage and govern this complex ecosystem, an architecture management tool is required that supports the documentation, analysis, and communication of architectural assets across domains, platforms and systems.
+The tool must facilitate traceability from business capabilities and information models to applications and technology components, while aligning with Roche’s enterprise standards and governance practices.
+
+Two candidate solutions have emerged:
+
+* *pRED Architecture Master Repository (AMR)* – a tool developed and used within pRED to curate and manage architecture artifacts. It has proven value in supporting reference architecture management, and providing transparency across pRED’s digital landscape.
+* *Archimedes* – a global vendor solution offered by Roche Digital Technology (RDT) to support enterprise-wide architecture management and harmonization across divisions.
+
+The decision on which tool to adopt will define the foundation for how the CS-CoE manages its architectural knowledge and enables collaboration across multiple scientific, data, and engineering domains.
+The selected solution must balance continuity of existing investments with long-term alignment to Roche’s global EA direction.
+
+== ℹ️ Context
+
+While the CS-CoE integration offers a unique opportunity to build a cohesive enterprise architecture capability, it also exposes fragmentation in the way architectural information is currently managed and shared.
+At present, architectural assets such as capability maps, system landscapes, and decision records are dispersed across multiple repositories.
+
+At present, pRED utilizes the AMR, which contains rich, curated content relevant to the pRED environment and has been used effectively for transparency and governance within that context.
+The gRED organization does not have something similar and information is more fragmented.
+
+In 2024, RDT introduced Archimedes, a corporate architecture management tool designed to support enterprise-wide standardization and integration of architecture data across divisions.
+While Archimedes aligns with global standards, its adoption within the research domain is still at an early stage and several challenges limit its applicability for CS-CoE Architecture needs:
+
+=== Scope and Complexity
+
+Archimedes covers all of Roche, including Pharma and Diagnostics. People can easily be overwhelmed by the breadth of data outside their domain.
+For example, when selecting a Business Capability, all taxonomies across Roche are displayed rather than only RED-specific ones, which makes it harder for people to fill in the information properly.
+This is especially true for colleagues with a non-technical background like scientists, who might be overwhelmed by the lack of scoped research specific records.
+
+=== Governance Limitations
+
+Archimedes currently operates on a wiki-like model, allowing any user to edit records.
+However, the CS-CoE necessitates a more stringent governance framework with role-based ownership and edit rights.
+While all gRED or pRED members can create new records, editing is restricted to individuals with a designated role (e.g., System Owner) for the specific record.
+Members of the architecture group have the authority to modify all records, including the ability to delete records and alter architecture-specific fields.
+Architects receive notifications upon the creation of new application records.
+Similarly, the designated contacts for an application are informed when responsibilities change.
+Additionally, Archimedes lacks support for structured workflows required by certain metadata attributes, such as DOJ Sensitive Data Compliance.
+
+=== Business Capability Model Gaps
+
+Archimedes does not support ontological structures, meaning entities cannot belong to multiple parent capabilities.
+Capability definitions are not available at selection, which limits usability and consistent understanding of taxonomy terms.
+
+=== Speed and Flexibility
+
+Changes to business capabilities, data object terminology, or organizational structures can only be executed by a central administrative team, creating bottlenecks.
+The evolution of taxonomies such as PRISME requires regular updates and mappings, which cannot be performed locally.
+Bulk or metadata updates require central intervention, delaying updates and limiting responsiveness.
+
+== 🌈 Consequences
+
+The CS-CoE therefore faces a strategic choice:
+
+. continue leveraging and expanding AMR to support needs for architecture management across the REDs, or
+. adopt Archimedes to align early with global standards and enable long-term convergence into Roche’s enterprise architecture ecosystem.
+
+This decision is critical for establishing an effective architecture governance model within the CS-CoE, avoiding redundant effort, ensuring a single source of truth, and enabling a seamless flow of architectural information across organizational boundaries.
+
+== 🤝 Outcome / Decision
+
+Both candidate solutions — AMR and Archimedes — address aspects of architecture management within Roche but differ significantly in maturity, scope, and alignment with CS-CoE needs.
+
+=== pRED Architecture Master Repository (AMR)
+
+*Strengths:*
+
+* Proven effectiveness in managing architecture for research-specific use cases.
+* Already embedded in pRED governance processes, with curated content and domain-specific data models aligned to research needs.
+* Lightweight and flexible, enabling quick updates to taxonomies, capability structures, and metadata fields.
+* Supports clear ownership and editing rights, providing strong governance control.
+* Readily usable by pRED and gRED colleagues, reducing onboarding complexity.
+
+*Limitations:*
+
+* Operates as a local solution without enterprise integration into Roche-wide tools.
+* Limited visibility outside pRED.
+* Is a custom application, where long-term sustainability depends on continued local support and development.
+
+=== Archimedes
+
+*Strengths:*
+
+* Enterprise-wide SaaS platform endorsed by RDT, ensuring strategic alignment and potential for cross-divisional harmonization.
+* Long-term sustainability secured through central RDT ownership and support.
+* SAP SaaS offering with vendor support
+* Built-in dashboards for heatmaps and dependency analyses
+* Pan Roche architecture management tool with existing data / usage from extended organizations (PD, Pharma and DIA) to connect REDs with other parts of the value chain when an E2E view is warranted
+
+*Limitations:*
+
+* Not yet adapted to the specific needs of the research domain; limited support for scientific ontologies and complex capability hierarchies.
+* Governance model currently too open for CS-CoE requirements.
+* The central administration model creates delays and limits flexibility.
+* User experience is not optimized for non-architects or domain scientists, which may reduce adoption.
+* Costs are charged by number of applications, which may result in a cost increase and potentially chargeback to the CS-CoE by RDT.
+* A steep learning curve for non-technical users to understand complex architectural terminologies while maintaining their apps compliance / lifecycles / dependencies.
+* The data section in Archimedes was recently introduced, so it’s unclear how deeply it can analyze the flow and dependencies, as well as connectivity with technology layers (dependencies with upstream and downstream systems for each critical DDC domain system).
+
+=== Recommendations
+
+Given the current maturity, usability, and governance requirements of the CS-CoE, the recommended approach is a *phased strategy*:
+
+. Continue leveraging and evolving the AMR as the operational architecture management tool for the REDs and the CS-CoE
+.. Extend its scope to include both pRED and gRED.
+.. Establish common taxonomies e.g. Business Capabilities, Data Objects
+.. Onboard gRED applications, and transition away from existing gRED processes to standardize our process across the CoE
+. Engage with RDT to
+.. Establish an automated data upload interface from AMR to Archimedes to make the data available in Archimedes for analysis across business units
+.. Shape the evolution of Archimedes so that it can meet research specific needs and governance requirements
+.. Establish a cohesive streamlined approach for what is the source of truth for information stored in Archimedes, IRM, CMDB, and ACT, and for RDT to build integrations between these systems to minimize duplication, increase consistency, and simplify things for business and technical application owners
+
+This approach maintains domain-specific flexibility, and positions the CS-CoE for eventual convergence with Roche’s enterprise architecture tool.
+It balances immediate usability and effectiveness with long-term strategic alignment.
+
+== 📚 Resources
+
+* link:https://archimedes.roche.com[Archimedes]
+* link:https://rochewiki.roche.com/confluence/display/GIA/ArchiMEDES[Archimedes wiki]
+* link:https://go.roche.com/amr[AMR]

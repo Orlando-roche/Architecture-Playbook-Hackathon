@@ -1,0 +1,67 @@
+{
+	"info": {
+		"_postman_id": "8608e8a4-06b2-403d-a9a1-55d43b52ee2a",
+		"name": "ROPC Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Token ROPC",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{clientSecret}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{clientId}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "password",
+							"type": "text"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text"
+						},
+						{
+							"key": "scope",
+							"value": "openid profile",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{iss}}/as/token.oauth2",
+					"host": [
+						"{{iss}}"
+					],
+					"path": [
+						"as",
+						"token.oauth2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

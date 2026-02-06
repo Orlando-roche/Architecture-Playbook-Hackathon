@@ -1,0 +1,47 @@
+:moduledir: ..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= Architecture Bodies
+:page-content-owner-email: alex.weigel@roche.com
+
+Our operating model relies on defined architectural bodies to ensure coherent, consistent, and scalable architecture practices across the CS-CoE and the broader organization. These bodies provide the structure for review, alignment, and approval of significant design choices, collectively overseeing the architectural direction and governance. 
+
+
+== Core Architecture Team
+image:icon_core_architecture_team.png[width=100,height=100] 
+
+The Architecture group is responsible for overseeing the architectural direction and governance within the Computational Sciences Center of Excellence (CS-CoE). The team ensures that architectural standards are maintained, best practices are followed, and that the architecture aligns with the overall business goals and strategies.
+
+
+== Architecture Council
+image:icon_architecture_council.png[width=100,height=100]
+
+The purpose of the Architecture Council is to connect the Core Architecture Team with the the broader CS-CoE organization and the REDs. Promote architectural alignment, increase awareness of architectural topics, and collaboratively address architectural challenges and develop and refine architectural strategies. 
+
+Members: Core Architecture Team and the Architecture Catalysts. 
+
+
+== Architecture Review Forum
+image:icon_architecture_review_forum.png[width=100,height=100]
+
+The Architecture Review Forum reviews and approves architectural designs, decisions, and changes within the CS-CoE. The forum ensures consistent, high-quality architectural decisions by providing a structured platform to review, align and approve significant design choices across the REDs. 
+
+Decision are made by the Architecture Department, guided by the principles defined in the xref:guidelines:guardrails.adoc[Architecture Guardrails]. Architecture Catalysts and Subject Matter Experts participate as consultative members, providing insights and domain perspectives to inform decision-making. If no clear consensus is reached, the Head of Architecture serves as the final decision authority to ensure timely resolution and accountability. All outcomes are captured and published as xref:governance:architecture-reviews.adoc[Architecture Decision Records (ADRs)].
+
+Members: Core Team + Architecture Catalysts + on-demand SMEs.
+
+
+== Architecture Workgroup
+image:icon_architecture_workgroup.png[width=100,height=100]
+
+Rapid, Cross-Functional Execution for Targeted Architecture Needs.
+
+* Purpose-driven teams formed to deliver a specific architecture outcome.
+* Cross-functional: including Architecture Catalysts and subject matter experts.
+* Time-bound: exist for no longer than three months to ensure focus and agility.
+* Outcome-focused: produce concrete deliverables such as blueprints, design proposals or standards.
+* Each workgroup has a dedicated lead who ensures focus, progress and delivery.
+
+
+
+

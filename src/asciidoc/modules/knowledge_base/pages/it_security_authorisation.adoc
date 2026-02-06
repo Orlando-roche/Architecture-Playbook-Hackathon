@@ -1,0 +1,382 @@
+:moduledir: ..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= Authorization
+:page-content-owner-email: christian.blumenroehr@roche.com
+
+IMPORTANT: This article is still a work in progress and will be updated to provide a holistic view of the CS CoE.
+
+The below APIs are exposed on Gravitee.
+Make sure you have the API consumer role as described https://minerva.pages.roche.com/api-platform/documentation/gravitee/API%20consumer/010_introduction.html[here].
+
+== RedPanda API for project data access management
+
+Our data in pRED have many facets: they can be associated to portfolio projects, studies, compounds, assays, reactions, etc., each of which might have its own access needs.
+To implement an authorization management solution that considers all these levels will take its time.
+In several OneD projects however one aspect is of general importance and needs to be addressed now: **how to manage access to the data belonging to a specific portfolio project?**
+
+RedPanda exposes an API on Gravitee
+
+* https://api.core.minerva.roche.com/catalog/api/a8c16ba0-12c2-4fb9-816b-a012c23fb965[RedPanda REST API]
+
+IMPORTANT: This API only provides the access management information which users should in general have access to project data.
+Consuming applications need to apply it!
+The consuming applications also need to decide which project data should be exposed and they also need to decide whether all users should be able to consume the same data or whether some application-specific roles apply, e.g. for ExBP users.
+
+== pREDiLogin API
+
+If you are using Active Directory groups to define access to your application you will need to check the membership of a user in some or several AD groups.
+This can be done with the pREDiLogin API.
+This API is available on Gravitee:
+
+* https://api.core.minerva.roche.com/catalog/api/0c6353d6-8cac-4e32-a353-d68cacce3235[pREDiLogin API]
+
+== IAM Proxy API 
+
+This service integrates responses from RedPanda + pREDiLogin (AD lookup) APIs into a single OIDC Rest Endpoint.
+You can get AD group memberships (based on a prefix or by specific groups) and projects IDs from the same REST endpoint.
+To authenticate against the service you need to send the access token.
+Important: this API only provides the access management information.
+Consuming applications need to apply it.
+
+API on Gravitee:
+
+* https://api.core.minerva.roche.com/catalog/api/16ddfd50-c08e-4d10-9dfd-50c08e3d1047[API using RedPanda PROD, pREDiLogin PROD and PingFed PROD]
+
+== CIDM Group Management API
+
+An alternative to the pREDiLogin API is the CIDM Group Management API which is https://anypoint.mulesoft.com/exchange/140fb0bb-4408-4224-b57c-c0852bab7f37/gis-cidm-groupmanagement-exp-api/minor/1.0/console/[exposed on Mulesoft].
+This API is in parts limited compared to the pREDiLogin API but in other parts it has additional functionalities.
+
+* same functionalities:
+** searching of groups
+** check the members of an Active Directory or CIDM group
+*** It is still to be checked whether the API also supports nested groups as the pREDiLogin API does.
+* missing functionalities compared to pREDiLogin API:
+** searching of users
+** retrieving user details
+** checking of group memberships for several groups and users
+** caching for high performance
+** checking credentials of users
+* additional functionalities compared to pREDiLogin API:
+** group management:
+*** create, delete groups
+*** add, delete users
+*** manage allowed senders
+
+== CIDM application integration
+
+The CIDM team (contact von-schwerin.chahir@gene.com) offers custom application integrations.
+This is especially useful, when 3rd party applications need to be integrated which allow user and role management via APIs in order to prevent that user and role management either needs to be performed manually or is done by potentially expensive custom implementations of the external vendors.
+
+The CIDM team can implement the integration with those APIs as part of the user on- and off-boarding processes as it is shown below for the example of Laboperator.
+Please note that authentication still should be implemented using Roche SSO (PingFederate).
+
+image::CIDM-application-integration.png[title="CIDM application integration for Laboperator"]
+
+
+== Auto-filled AD/CIDM groups for access management
+
+We have several AD groups which are all starting with GLOpAppAuth_ and which are using AD filters to be populated automatically. These groups reflect organisations and can be used for access management.
+
+[opts="AD groups"]
+|===
+| Name of AD group | AD filter | Description | Sub groups
+| GLOpAppAuth_pRED_All | - | - a| 
+
+* GLOpAppAuth_pRED_Internals_All
+* GLOpAppAuth_pRED_Contractors_All
+* GLOpAppAuth_pRED_Trainees
+* GLOpAppAuth_pRED_Technical
+
+| GLOpAppAuth_pRED_Internals_All 
+a| [source,text]
+----
+(&(\|(department=P*)(cn=bonnia)
+  (&(\|(department=GT*)(department=GS*))(\|(c=CH)(c=DE)(c=GB))))
+  (!(department=People*))
+  (company=*Roche*)
+  (division=Pharmaceuticals)
+  (employeeType=internal)
+  (!(l=SHANGHAI))(!(gneCostCenterName=*CICoR*))
+  (rocheIsPrimaryUserID=TRUE)
+  (!(UserAccountControl:1.2.840.113556.1.4.803:=2))
+) 
+---- 
+
+a|All internal users 
+
+* with a department starting with "P" (plus Azad Bonni as pRED head)
+* and who have either an department starting with "GT" or "GS" and who are in Switzwerland, Germany or UK (this is to still include the users from legacy D&A)
+* but who are not in CICoR
+| -
+| GLOpAppAuth_pRED_Contractors_All 
+a| [source,text]
+----
+(&(­\|(department=P*)
+  (&(\|(department=GT*)(department=GS*))(\|(c=CH)(c=DE)(c=GB))))
+  (!(department=People*))
+  (company=*Roche*)
+  (division=Pharmaceuticals)
+  (employeeType=contractor)
+  (!(l=SHANGHAI))(!(gneCostCenterName=*CICoR*))
+  (rocheIsPrimaryUserID=TRUE)
+  (!(UserAccountControl:1.2.840.113556.1.4.803:=2))
+) 
+---- 
+
+a|All external users 
+
+* with a department starting with "P"
+* and who have either an department starting with "GT" or "GS" and who are in Switzwerland, Germany or UK (this is to still include the users from legacy D&A)
+* but who are not in CICoR 
+| - 
+| GLOpAppAuth_pRED_Trainees 
+a| [source,text]
+----
+(&(department=HBI*)(l=BASEL)
+  (\|(buildingName=065)
+     (buildingName=068)
+     (buildingName=069)
+     (buildingName=070)
+     (buildingName=007)
+     (buildingName=006)
+     (buildingName=005)
+     (buildingName=090))
+  (\|(division=Others)(division=Pharmaceuticals))
+  (employeeType=internal)
+  (rocheIsPrimaryUserID=TRUE)
+  (!(UserAccountControl:1.2.840.113556.1.4.803:=2))
+) 
+---- 
+
+a|All internal users 
+
+* from department starting with HBI
+* who are in BASEL
+* and who are in one of the listed buildings 
+| - 
+| GLOpAppAuth_pRED_Technical | - | - | -
+| GLOpAppAuth_pRED_BDS | - | - a|
+
+* BDS Access
+* GLOBDS_USER_GENERIC
+* GLOpAppAuth_CICoR_All
+
+| GLOpAppAuth_CSCoE_All | - | - a|
+
+* GLOpAppAuth_CSCoE_Internals_All
+* GLOpAppAuth_CSCoE_Contractors_All
+
+| GLOpAppAuth_CSCoE_Internals_All | - | - a|
+
+* GLOpAppAuth_CSCoE_EMEA_Internals_All
+* GLOpAppAuth_CSCoE_NALA_Internals_All
+* GLOpAppAuth_CSCoE_ASIA_Internals_All
+* marionij
+
+| GLOpAppAuth_CSCoE_Contractors_All | - | - a|
+
+* GLOpAppAuth_CSCoE_EMEA_Contractors_All
+* GLOpAppAuth_CSCoE_NALA_Contractors_All
+*GLOpAppAuth_CSCoE_ASIA_Contractors_All
+
+| GLOpAppAuth_CSCoE_EMEA_All | - | - a|
+
+* GLOpAppAuth_CSCoE_EMEA_Internals_All
+* GLOpAppAuth_CSCoE_EMEA_Contractors_All
+
+| GLOpAppAuth_CSCoE_EMEA_Internals_All a|
+[source,text]
+----
+(&(\|(department=GT*)(department=GS*))
+  (\|(c=CH)(c=DE)(c=GB))
+  (division=Pharmaceuticals)
+  (employeeType=internal)
+  (rocheIsPrimaryUserID=TRUE)
+  (!(UserAccountControl:1.2.840.113556.1.4.803:=2))
+)
+
+----  
+a| All internal users
+
+* in a department starting with GT or GS
+* in Switzerland, Germany or the UK
+| -
+| GLOpAppAuth_CSCoE_EMEA_Contractors_All a|
+[source,text]
+----
+(&(\|(department=GT*)(department=GS*))
+  (\|(c=CH)(c=DE)(c=GB))
+  (division=Pharmaceuticals)
+  (employeeType=contractor)
+  (rocheIsPrimaryUserID=TRUE)
+  (!(UserAccountControl:1.2.840.113556.1.4.803:=2))
+)
+
+----  
+a| All external users
+
+* in a department starting with GT or GS
+* in Switzerland, Germany or the UK 
+| -
+| GLOpAppAuth_CSCoE_NALA_All | - | - a|
+
+* GLOpAppAuth_CSCoE_NALA_Internals_All
+* GLOpAppAuth_CSCoE_NALA_Contractors_All
+
+| GLOpAppAuth_CSCoE_NALA_Internals_All a|
+[source,text]
+----
+(&(\|(department=GT*)(department=GS*))
+  (\|(c=US)(c=CA))
+  (division=Pharmaceuticals)
+  (employeeType=internal)
+  (rocheIsPrimaryUserID=TRUE)
+  (!(UserAccountControl:1.2.840.113556.1.4.803:=2))
+)
+
+----  
+a| All internal users
+
+* in a department starting with GT or GS
+* in the US or Canada
+| - 
+| GLOpAppAuth_CSCoE_NALA_Contractors_All a| 
+[source,text]
+----
+(&(\|(department=GT*)(department=GS*))
+  (\|(c=US)(c=CA))
+  (division=Pharmaceuticals)
+  (employeeType=contractor)
+  (rocheIsPrimaryUserID=TRUE)
+  (!(UserAccountControl:1.2.840.113556.1.4.803:=2))
+)
+
+----  
+a| All external users
+
+* in a department starting with GT or GS
+* in the US or Canada
+| - 
+| GLOpAppAuth_CSCoE_ASIA_All | - | - a|
+
+* GLOpAppAuth_CSCoE_ASIA_Internals_All
+* GLOpAppAuth_CSCoE_ASIA_Contractors_All
+
+| GLOpAppAuth_CSCoE_ASIA_Internals_All a| 
+[source,text]
+----
+(&(\|(department=GT*)(department=GS*))
+  (\|(c=CN))
+  (division=Pharmaceuticals)
+  (employeeType=internal)
+  (rocheIsPrimaryUserID=TRUE)
+  (!(UserAccountControl:1.2.840.113556.1.4.803:=2))
+)
+
+----  
+a| All internal users
+
+* in a department starting with GT or GS
+* in China
+| - 
+| GLOpAppAuth_CSCoE_ASIA_Contractors_All a|
+[source,text]
+----
+(&(\|(department=GT*)(department=GS*))
+  (\|(c=CN))
+  (division=Pharmaceuticals)
+  (employeeType=contractor)
+  (rocheIsPrimaryUserID=TRUE)
+  (!(UserAccountControl:1.2.840.113556.1.4.803:=2))
+)
+
+----  
+a| All external users
+
+* in a department starting with GT or GS
+* in China
+| -  
+| GLOpAppAuth_gRED_All | - | - a|
+
+* GLOpAppAuth_gRED_Internals_All
+* GLOpAppAuth_gRED_Internals_All
+
+| GLOpAppAuth_gRED_Internals_All a| 
+[source,text]
+----
+(&((department=G*)
+  (company=Genentech*)
+  (employeeType=internal)
+  (rocheIsPrimaryUserID=TRUE)
+  (!(UserAccountControl:1.2.840.113556.1.4.803:=2))
+)
+
+----  
+a| All internal users
+
+* in a department starting with G
+* in a company starting with Genentech (this currently excludes the legacy D&A team)
+| - 
+| GLOpAppAuth_gRED_Contractors_All a|
+[source,text]
+----
+(&((department=G*)
+  (company=Genentech*)
+  (employeeType=contractor)
+  (rocheIsPrimaryUserID=TRUE)
+  (!(UserAccountControl:1.2.840.113556.1.4.803:=2))
+)
+
+----  
+a| All external users
+
+* in a department starting with G
+* in a company starting with Genentech (this currently excludes the legacy D&A team)
+| -  
+| GLOpAppAuth_CICoR_All | - | - a|
+
+* GLOpAppAuth_CICoR_Internals_All
+* GLOpAppAuth_CICoR_Contractors_All
+
+| GLOpAppAuth_CICoR_Internals_All a| 
+[source,text]
+----
+(\|(cn=shenh8)
+  (&((company=Roche R&D Center (China)*))
+    (division=Pharmaceuticals)
+    (department=PB*)
+    (employeeType=internal)
+    (rocheIsPrimaryUserID=TRUE)))
+    (!(UserAccountControl:1.2.840.113556.1.4.803:=2))
+)
+
+----  
+a| All internal users
+
+* in a department starting with PB
+* in a company starting with Roche R&D Center (China)
+* plus Hong Shen (head of CICoR)
+
+| - 
+| GLOpAppAuth_CICoR_Contractors_All a| 
+[source,text]
+----
+((&((company=Roche R&D Center (China)*))
+    (division=Pharmaceuticals)
+    (department=PB*)
+    (employeeType=contractor)
+    (rocheIsPrimaryUserID=TRUE)))
+    (!(UserAccountControl:1.2.840.113556.1.4.803:=2))
+)
+
+----  
+a| All external users
+
+* in a department starting with PB
+* in a company starting with Roche R&D Center (China)
+
+| -
+
+|===

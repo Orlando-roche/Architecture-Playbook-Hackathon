@@ -1,0 +1,20 @@
+:moduledir: ..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= Architecture Catalyst Role
+:page-content-owner-email: alex.weigel@roche.com
+
+The introduction of the Architecture Catalyst role is a strategic decision to mitigate the risk of the Core Architecture group becoming a bottleneck and to drive value across the CS-CoE by establishing robust and trustworthy relationships.
+
+image:catalyst_network.png[]
+
+Architecture Catalysts are individuals within the organization who act as a bridge between the Architecture Department and the broader organisation. 
+The Architecture Catalysts collaborate with the Core Architecture Team and serve as advocates for architecture, helping to better support and engage with the CS-CoE and the REDs on navigate architectural challenges.
+
+== Role Purpose and Characteristics
+
+* Connecting Role: This role focuses on Connecting People, Strategy, and Technology.
+* Comprehensive Understanding: Architecture Catalysts are individuals with a deep understanding of specific areas within the Research and Early Development (REDs)' digital landscape.
+* Alignment: They ensure alignment between the wider organization and the Architecture Department.
+* First Contact Point: They serve as the first point of contact for communication between their respective department and the Architecture team.
+* Guardrail Adherence: They are responsible for ensuring that Architecture best practices and processes are followed.

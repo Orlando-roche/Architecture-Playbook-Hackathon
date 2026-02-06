@@ -1,0 +1,37 @@
+:moduledir: ..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= Low-Code Platforms
+:page-content-owner-email: christian.blumenroehr@roche.com
+
+Low-code/no-code development platforms are types of visual software development environments that allow enterprise developers and citizen developers to drag and drop application components, connect them together, and create mobile or web apps. These platforms are often discussed synonymous with the development methods they embody.
+
+Low-code and no-code modular approaches let professional developers quickly build applications by relieving them of the need to write code line by line. They also enable business analysts, office administrators, small-business owners, and others who are not software developers to build and test applications. These people can create applications with little to no knowledge of traditional programming languages, machine code, or the development work behind the platform's configurable components.
+
+In a nutshell low-code platforms promise to enable non-technical people to build applications and to accelerate development.
+
+
+== Overview of Available Platforms at Roche
+
+There are many low-code platforms available—both on the market and within Roche—each with different strengths and limitations. Choosing the right platform should be driven by the product’s specific business requirements and the budget available for development and ongoing support. It’s also important to consider the expected delivery model: whether the solution can be built by citizen developers or requires a certified development team. Certified teams bring the experience needed to implement robust integrations and ensure alignment with Roche standards.
+
+For guidance, the https://sites.google.com/roche.com/a-rad/home[Roche Automation & Rapid Application Development] team provides a dedicated overview of supported low-code platforms to help accelerate application delivery.
+
+IMPORTANT: All the Global Informatics offerings are valid and different requirements mean different decisions. All major platforms require certified developers to access the platforms.
+
+== Recommended Platforms
+
+To support a consistent, scalable, and compliant digital toolset, the following three applications as preferred options, each aligned to a specific use case:
+
+1. The https://go.roche.com/apex[pRED APEX Platform] is the preferred low-code development environment for data-driven applications in pRED. It enables rapid development of secure, database-centric solutions and is well suited for building internal apps that rely on structured data, workflows, and reporting. Standardizing on Oracle APEX also reduces fragmentation across ad-hoc tooling and improves maintainability through a common platform.
+
+2. https://www.monday.com/[Monday.com] should be the recommended tool for self-service project and work management, with the goal of consolidating overlapping tools into one enterprise solution. It provides a flexible and user-friendly environment for planning, tracking, and collaborating across teams—while supporting governance through a standardized platform approach. This recommendation also aligns with the stated intent to replace or reduce parallel usage of tools such as Smartsheet, MS Project, Asana, and other unsupported third-party solutions.
+
+3. https://sites.google.com/roche.com/a-rad/our-technologies/leap[LEAP / Outsystems] is positioned as the preferred Roche Digital Technology platform for enterprise-grade application development. It supports faster delivery while maintaining stronger architectural patterns for larger solutions, and it is positioned as a preferred Roche Digital Technology platform.
+
+IMPORTANT: Together, these three recommendations create a clear “right tool for the job” standard: APEX for data-driven apps in pRED, Monday.com for work/project management, and LEAP/Outsystems for enterprise low-code applications—helping reduce tool sprawl, improve supportability, and strengthen governance.
+
+== Roche Informatics Positioning
+
+* https://sites.google.com/roche.com/a-rad/home[Roche "Automation & Rapid Application Development" Team gSite]
+* https://rochewiki.roche.com/confluence/pages/viewpage.action?spaceKey=LOWCODE&title=Build+Your+Application[Roche "Automation & Rapid Application Development" Team Wiki]

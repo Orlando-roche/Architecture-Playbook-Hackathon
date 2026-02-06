@@ -1,0 +1,34 @@
+:moduledir: ..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= Common Vulnerabilities and Exposures (CVEs)
+:page-content-owner-email: agnes.meyder@roche.com
+
+Version 1.0 July 2022
+
+CVEs are publicly known vulnerabilities in software which need to be fixed or mitigated by us in a certain timeframe.
+General information about CVEs can be found in the internet such as https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures[Wikipedia: CVE]
+
+Roche helps in running https://gds-selfsubscription.roche.com/#/group/GLOVMCVA[notification email lists] for certain types of applications.
+Additionally, Roche is increasing their support for https://sites.google.com/a/roche.com/vm/processes/vulnerability-reports[automated system scans].
+
+We also need to stay on the look-out for less publicly known CVEs in checking our base images and code library dependencies on a regular basis.
+
+== Assistance per hosting platform
+
+CVEs in our VMs will be patched by GIS.
+
+Docker images need to be patched by the respective team. Our platforms help in running regular scans for us.
+Scans by Aqua are run by the Minerva team every 6 months as of 2022.
+CVEs in the CaaS environment can be found on their https://aqua.kubemeainfra.science.roche.com/[overview page].
+
+== Tasks for applications and services
+
+Patch activities are the duty of the respective service and project team. It is also in their responsibility to receive and deploy patched vendor products in a timely manner.
+Details can be found in the https://drive.google.com/file/d/1YtaHWakWm0lvUE622lBlmd8t92g2YOns/view[Roche Security Patch Management Standard].
+
+Rule of thumb for internal system mean that the fix for a CVE should be deployed within two weeks.
+
+Inspiration for a CVE resolution process can be found in the strategy outlined by the https://pred-scicomp.pages.roche.com/cloud/minerva/documentation/200-devops-guide/020-platform-operations/800-vulnerability-management.html[Minerva team].
+
+In the case of Java, plugins such as the OWASP and Maven dependency check can help to flag outdated dependencies when building the software. Outdated dependencies have an increased risk of containing a CVE.

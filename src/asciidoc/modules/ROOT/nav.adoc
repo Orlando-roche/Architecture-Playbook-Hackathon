@@ -1,0 +1,32 @@
+* xref:index.adoc[Home]
+** xref:architecture_catalyst_role.adoc[]
+** xref:bodies.adoc[]
+** xref:process.adoc[]
+** xref:team.adoc[]
+** xref:cscoe-ref-arch.adoc[]
+
+* Guidelines
+** xref:guidelines:guidelines.adoc[]
+** xref:guidelines:guardrails.adoc[]
+** xref:guidelines:iam.adoc[]
+
+* Architecture Decision Records
+** xref:governance:architecture-reviews.adoc[]
+*** 2025-Reviews
+**** xref:governance:2025-reviews/adr-25-01_animal-registry-gari.adoc[]
+**** xref:governance:2025-reviews/adr-25-02_orchestration-tool.adoc[]
+**** xref:governance:2025-reviews/adr-25-03_architecture_management.adoc[]
+
+* Knowledge Base
+** Development
+*** xref:knowledge_base:jetbrains-licenses.adoc[]
+*** xref:knowledge_base:renovate-bot.adoc[]
+*** xref:knowledge_base:data-workflow-pipeline.adoc[]
+*** xref:knowledge_base:developer-quickstart.adoc[]
+*** xref:knowledge_base:low_code_platforms.adoc[]
+*** xref:knowledge_base:open-source.adoc[]
+** Security
+*** xref:knowledge_base:it_security_authentication.adoc[]
+*** xref:knowledge_base:it_security_authorisation.adoc[]
+*** xref:knowledge_base:it_security_certificates.adoc[]
+*** xref:knowledge_base:it-security-cve.adoc[]

@@ -1,0 +1,55 @@
+:moduledir: ..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= Architecture Guardrails
+:page-content-owner-email: alex.weigel@roche.com
+
+The Architecture Guardrails define the key boundaries and principles that guide the design, implementation, and evolution of solutions across the Computational Sciences Center of Excellence (CS-CoE).
+They ensure cohesion, interoperability, compliance, and sustainability across the REDs’ digital landscape while enabling innovation and agility.
+
+[IMPORTANT]
+--
+[red]*This is section is in DRAFT state and Work In Progress.* The content is subject to active discussion and may change.
+
+If you have *feedback or want to contribute* you may join our  link:https://roche.enterprise.slack.com/archives/C097C8D6S0M[architecture slack channel] or send an email to our mailto:CSCOE-ARCHITECTURE-CATALYST@msxdl.roche.com[Architecture Catalyst Council].
+--
+
+== Core Technology and Integration
+
+* *API & Integration:* API-first design, registration and publishing via DISCUSS: ? link:https://gravitee.roche.com/[Gravitee] API Gateway.
+* DISCUSS: ?Event & Messaging: ?? Event Platform for asynchronous integration and data sharing
+* *Identity & Access Management:* User facing applications leverage SSO provided by PingFederate.
+* *Project Based Access Management (PBAC/PBAM):* 
+
+
+== Hosting
+
+* Usage of Roche standard infrastructure offerings for on-premise and cloud (link:https://sites.google.com/roche.com/cloudhosting/the-offering/our-portfolio[Roche Cloud Platform (RCP)])
+* The preferred RCP cloud provider for the CSCoE is AWS.
+
+
+== Governance & Compliance
+
+* An *Architecture Review* must be done by all new or significantly modified systems which: 
+.. Have a substantial relevance and impact on the landscape (e.g. new registration systems, platforms)
+.. Deviate from the reference as described in this document
+* *Decision Transparency:* The Architecture team must document decisions in the Architecture Decision Records (ADRs)
+* Computerized systems must perform a *Security and Risk Assessment* link:https://iraam.roche.com/[IRM].
+* Register your solution in link:https://act.roche.com/[ACT] if you require the option to *test application compatibility* on client machines. 
+* New applications requiring *infrastructure from Global Informatics*, must be registered in link:https://sites.google.com/roche.com/snow-itsm-for-pred[ITSM Service Now].
+* Artifacts of *Business Information and Architecture* must be captured in the link:https://go.roche.com/amr[Architecture Master Repository (AMR)].
+* Adhere to *local compliance rules* for user-facing applications, e.g. in Germany the link:https://roche.service-now.com/people_and_culture?id=kb_article&sysparm_article=KB0081364[works council approval] is required before making a new tool available to employees. 
+
+
+== Data, Security & Privacy 
+
+* *Data Classification:* Define and protect data according to Roche privacy and data-handling policies.
+* Application defines and uses a *terminology* which is accessible (recommended terminology server is link:https://go.roche.com/rts[RTS])
+* link:https://go.roche.com/FAIRArchitecturePlaybook[FAIR] principles are applied.
+* *Audit & Monitoring:* Systems must support auditability and operational visibility. 
+
+
+== Delivery, Lifecycle & Innovation
+ 
+ * DISCUSS: ? *Documentation:* All architecture artifacts must be documented using OneDoc?
+ * *Innovation:* Pilot innovative new solutions in controlled sandbox environments before scaling. 

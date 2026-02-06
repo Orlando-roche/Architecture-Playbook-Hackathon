@@ -1,0 +1,45 @@
+:moduledir: ..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= CS CoE JetBrains Licenses
+:page-content-owner-email: orlando.pereira@roche.com
+
+== Introduction
+
+The CS CoE has 50 licenses of the JetBrains https://www.jetbrains.com/all/[All Products Pack] allowing the use of the wide variety
+of JetBrains IDEs in their Professional Editions by colleagues.
+
+== Terms of use
+
+[discrete]
+=== Who can use the licenses?
+The licenses are intended for all members of the CS CoE Department and contractors working directly
+with CS CoE colleagues. Colleagues working for other departments or contractors hired through other
+departments are not allowed to use these licenses. 
+
+[discrete]
+=== Be a Good Citizen
+The licenses are floating. Only running IDEs are consuming a license seat. Therefore please…
+
+* Close IDEs when they are not used to free up license seats
+* Avoid opening several IDEs with the license server (don’t block multiple licenses)
+* Consider using the community editions of the IDEs. Maybe the professional features are not needed for you 
+
+== How to activate the IDE
+Follow the follow instructions:
+
+* Visit our JetBrains https://roche-cscoe.jetbrains-ide-services.com/[IDE Services] instance: 
+* Install the JetBrains Toolbox App (if not already installed)
+* Sign in using your Roche credentials
+* Click 'Join Roche CS COE'
+
+IMPORTANT: If you are a Windows user and encounter issues installing or configuring the JetBrains Toolbox, you can manually activate your IDE by following these steps:
+
+* Open your JetBrains IDE.
+* If you do not yet have a license, the activation dialog will appear automatically. If it does not, go to Help > Register to open it.
+* If the IDE is already activated, select Activate Another License.
+* In the activation dialog, choose Paid license > License server.
+* Enter the following URL in the Server address field: `https://roche-cscoe.jetbrains-ide-services.com/`
+* Click Activate.
+
+For more detailed instructions, please refer to the official JetBrains https://www.jetbrains.com/help/ide-services/Activating_a_license.html#to-activate-a-license[documentation].

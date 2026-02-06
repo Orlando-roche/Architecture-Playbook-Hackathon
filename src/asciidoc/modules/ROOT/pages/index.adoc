@@ -1,0 +1,8 @@
+:moduledir: ..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= Computational Sciences Center of Excellence (CS-CoE) Architecture Playbook
+:page-content-owner-email: alex.weigel@roche.com
+:navtitle: CS-CoE Architecture Playbook
+
+The CS-CoE Architecture Playbook is a collection of best practices, guidelines, and standards for designing and implementing software architectures within the Computational Sciences Center of Excellence at Roche. It serves as a reference for architects, developers, and other stakeholders involved in software development projects.

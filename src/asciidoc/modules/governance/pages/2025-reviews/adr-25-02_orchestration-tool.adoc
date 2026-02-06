@@ -1,0 +1,142 @@
+:moduledir: ../..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= ADR-25-02: Orchestration Tool
+
+|===
+| **Status** | Accepted 
+| **Impact** | Low
+| **Demand Owner** | Imran Khan
+| **ADR Contributors** | Anish Kejariwal
+| **Informed** | Aaron Archer Waterman, Alex Weigel, Gautam Singh, Henri Dwyer, Hugo Lam, Merima Birkhimer, Mark McCreary, Muller Mu, Ramachandran Prasad, Vitek Trela, Yogesh Pandit
+| **Publication Date** | October 29, 2025
+|===
+
+== 📗 Background
+Today, in the CoE organization we lack a standardized, modern orchestration platform for data pipelines and MLOps orchestration. This gap creates fragmented approaches, higher operational overhead, and slower delivery to our stakeholders. Since 2024, parts of the legacy gCS organization has been leveraging open-source Dagster (OSS) in production with success:
+
+* AI4DD (formerly MLDD): first adopters of Dagster
+* gRED MLOps: as part of link:https://docs.google.com/presentation/d/13xCvv1f4aFDb9realp3XFAnH47oQaAfjAzG9MjuWLcg/edit?slide=id.g2cf6639785e_1_6#slide=id.g2cf6639785e_1_6[initiative approval] with gCS LT in 2024, Dagster was selected over Kubeflow.
+
+Additionally, the SADR product team (in legacy gCS) ran a link:https://docs.google.com/presentation/d/1ETfOmb6OuFJ6WR4lumYCu0SwN0qyVf4kLP2TokAwwFw/edit?slide=id.g328d4427f20_0_0#slide=id.g328d4427f20_0_0[side-by-side] comparison of Airflow with Dagster for data pipelines and recommended Dagster, further advising that Dagster+ (enterprise version) should be used to scale more widely in the organization.
+
+Based on these experiences, the gRED Data Ecosystem leadership decided in April 2025 to fund a 1-year Dagster+ license with a limited number of seats (15) as a seed-and-grow strategy to determine if this could be a preferred orchestration tool for gCS. This will cost ~$150k (inclusive of 12 seats, with additional seats available at $1200/seat pro-rated, and 3 admin seats at $800/seat). Procurement is expected to complete in early September.
+
+
+== ℹ️ Context
+
+The decision to purchase Dagster+ was made in the legacy gCS organization as part of the gRED Data Ecosystem initiative. With the creation of the CS-CoE organization in July 2025, this ADR documents the rationale, scope, and strategy for Dagster+, and piloting it as a potential candidate for a CoE wide orchestration platform.
+
+== 🤝 Outcome / Decision
+
+We will complete the purchase of the 1-year Dagster+ license, which will still be funded by the 2025 gRED Data Ecosystem budget. This decision:
+
+* Does not establish Dagster+ as the data pipeline orchestration standard for the CoE, or the gRED Data Ecosystem
+* Does not imply Dagster+ will be the standard for MLOps in CoE (note: pRED MLOps currently uses Kubeflow)
+
+By starting with a limited number of Dagster+ seats, this provides us with a seed-and-grow pilot strategy that aims to deliver value to current Dagster users in the organization and further evaluate Dagster+ for broader CoE adoption and as a potential standard.
+
+=== Rationale
+Dagster was selected by legacy gCS because it provides a unified platform for data and ML pipelines, and demonstrated key advantages compared to alternatives
+
+* Developer experience – asset-based approach, intuitive UI, and graphical representation of pipelines make it easy for developers to get started, and an opportunity for scientists to build data pipelines.
+* Momentum and adoption: success in production in gCS, and rapidly growing industry adoption and link:https://github.com/dagster-io/dagster/graphs/contributors[active open-source development], particularly in comparison to link:https://github.com/kubeflow/kubeflow/graphs/contributors[Kubeflow] (link:https://github.com/kubeflow/model-registry/graphs/contributors?from=8%2F2%2F2025[registry], link:https://github.com/kubeflow/trainer/graphs/contributors[trainer], link:https://github.com/kserve/kserve/graphs/contributors[kserve], link:https://github.com/kubeflow/pipelines/graphs/contributors[pipelines]) in 2024 (Note: momentum should be re-evaluated as Kubeflow may have gained new momentum in 2025, as it is recently part of the link:https://www.cncf.io/blog/2025/07/18/a-mid-year-2025-look-at-cncf-linux-foundation-and-the-top-30-open-source-projects/[CNCF]).
+* Integration with key frameworks – native integration with dbt and OpenLineage for data engineering, and W&B for MLOps. 
+* Observability – strong monitoring UI making it easy to spot and debug errors in complex workflows
+* Iteration speed – supports partial runs and resuming from failures, accelerating development cycles
+
+Additional information can be found in the Resources section. 
+
+=== Alternatives Considered
+
+* Kubeflow: Successfully in production in legacy D&A, but it comes with a more complex API for pipeline definitions, which might be a hurdle for adoption on the gRED-side - knowing the lack of relevant experience and capabilities in the North-America based teams.  Note: the pRED-MLOps team has been successful in abstracting this complexity in the Kubeflow Pipeline API largely away - by providing user- and self-service-friendly MLOps-SDK, reusable Kubeflow Pipeline components, and Bring Your Own Container (BYOC) approach. Kubeflow pipeline for both data pipelines and ML pipelines.
+* Apache Airflow: Used in legacy D&A and legacy gCS. Limitations in dbtCore integration, and weaker observability, traceability, and lineage compared to Dagster.
+* SageMaker Pipelines: Previously used in legacy gCS, but experienced very low, and slow pipeline deployment. 
+
+Since the evaluation was originally done, there are additional options to be considered for evaluation:
+
+* Nextflow: In active use with gRED FDFM (Foundational Data for Foundational Models), and omics workflows 
+* Argo Workflows: Successfully used in the Spring Sciences platform, and is the default executor in the pRED-MLOps’ Kubeflow Pipelines. Note: the Dagster vendor (inherently biased) said they have seen customers migrate from Argo to Dagster, since Argo is infra-centric and best “for DevOps engineers but becomes a bottleneck for data engineers, analytics engineers, or ML practitioners who want Pythonic, declarative workflows and local testing”.
+
+
+
+== 🌈 Consequences
+=== Pros:
+
+* Provide immediate value to existing Dagster users (e.g. AI4DD) through Dagster+ specific (e.g. branch deployments, launcher role) functionality they have requested
+* Demonstrate whether Dagster+ RBAC functionality will enable scaling Dagster to a wider set of users, and for use cases where auditing is required
+* Build evidence to support a CoE-wide decision on the value of Dagster, and a decision on whether to have a unified orchestration platform versus when to have use-case, data domain specific platforms
+* Validate Dagster could be integrated with data catalog, lineage, and quality tools to provide a more robust, consistent framework for data pipelines to support our CoE Data Ecosystem
+
+=== Cons:
+
+* Higher cost vs. open source alternatives (e.g. Dagster, Airflow, Kubeflow, Nextflow, Argo)
+* Vendor dependence
+* Perception risk that this signifies Dagster has already been selected as a CoE standard
+* The learning curve with Dagster’s asset-based approach, though existing users have reported it’s relatively easy to learn
+
+
+=== Neglected Options based on desired outcomes:
+
+* Delay purchase of Dagster+: We could have postponed procuring Dagster+ until selecting a CoE standard, but this provides valuable learning at low commitment and provides value for AI4DD
+* Standardize immediately: Dagster+ purchase is low commitment through existing 2025 budget, and enables us to gather further evidence in our new CoE org
+
+
+
+=== Implementation considerations
+==== Why Dagster+ over Dagster OSS?
+
+* link:https://docs.dagster.io/deployment/dagster-plus/ci-cd/branch-deployments[Branch deployments] - requested feature from AI4DD
+* link:https://docs.dagster.io/deployment/dagster-plus/authentication-and-access-control/rbac/user-roles-permissions[Launcher role]
+* Vendor support
+* link:https://docs.dagster.io/deployment/dagster-plus/authentication-and-access-control/rbac/user-roles-permissions[Role-based user management] (absent in OSS, which could limit adoption)
+* Managed (SaaS) control plane, further simplifying operations
+
+
+==== Container Orchestration Platform Deployment
+
+* Will run on Lightship, the replacement for Nostromo, as part of the gRED Cloud Foundation EKS platform. Dagster OSS already runs on Nostromo, which will be decommissioned by end of 2025
+* Technical Support & Operations team (in DDC-Solutions) will own infrastructure operations, including user management
+
+==== Evaluation Use Cases
+
+To demonstrate impact and guide potential CoE-wide decision:
+* Data pipeline: via gRED Data Ecosystem, 1-2 new pipelines built on Dagster+, plus design (and preferably PoC) to validate integrations with catalog, lineage, and quality tools 
+* MLOps: 1-2 ML workflows to test Dagster+ alongside existing Kubeflow
+
+Execution will be collaborative across legacy gCS and D&A orgs to ensure input into a CoE-wide recommendation.
+
+
+== 🤝 Outcome / Decision
+
+A formal checkpoint will occur in Q1 2026 led by Enterprise Architecture to review progress and evaluation against agreed upon criteria, rather than waiting until end of term:
+
+* Eval Criteria
+** Ease of Use
+** Adoption
+** Validation against data pipeline use cases, including demonstrating (by design or implementation) integration with catalog and data lineage
+** Validation against MLOps use cases
+** Financial viability (with forecast) for broader organization adoption
+** Migration effort required for existing solutions and platforms to potentially consolidate towards Dagster+  
+** Security compliance status (for being capable to rollout to boarder organization)
+** Operational efficiency
+
+
+* Outcome of checkpoint
+** Clarify which use cases Dagster+ is best suited for, and which are better served by other platforms
+** Decide whether Dagster+ should be established as a CoE orchestration standard (primary or one of several)
+
+
+== 📚 Resources
+
+* link:https://docs.google.com/presentation/d/13xCvv1f4aFDb9realp3XFAnH47oQaAfjAzG9MjuWLcg/edit?slide=id.g2cf6639785e_1_6#slide=id.g2cf6639785e_1_6[MLOps Initiative Presentation for gCS LT]
+* Dagster vs. Kubeflow
+** link:https://docs.google.com/spreadsheets/d/1GjsDR1R1_K81FJuHv1rtHM-2urUZVNFJmSg4B6augsU/edit?gid=706088898#gid=706088898[MLOps team comparison of Dagster vs. KubeFlow (2024)]
+** link:https://code.roche.com/gred/gcs/catalysts/data-and-solutions-engineering/ace/gcs-search/imageSearchPipeline/-/blob/develop/pipeline_architecture.md[Example diagram showing how Dagster is used to orchestrate ML workflow]
+** link:https://docs.google.com/presentation/d/13FgEjoWCeRy-2ADNRm1xWz5gznyqSb8HHeBJGu4OAWg/edit?slide=id.g26f131e7e3d_0_878#slide=id.g26f131e7e3d_0_878[Initial discussion with MLDD on Dagster vs. KubeFlow (2024)]
+** link:https://docs.google.com/presentation/d/1kPW__wejYK5ct0x_DSx_jJbk8XchLn1TfghodwnEtMw/edit?slide=id.p3#slide=id.p3[gRED vs. pRED MLOps discussion on Dagster vs. Kubeflow usage]
+** link:https://code.roche.com/isoso/open-source-project-health-assessment/-/blob/main/reports/Kubeflow/Kubeflow_comparison.pdf?ref_type=heads[Comparison Report for Kubeflow, Dagster, Ray and Flyte (2024 - Roche InnerSource and OpenSource office conducted a review by a third-party company)]
+* Dagster vs. Airflow
+** link:https://docs.google.com/presentation/d/1ETfOmb6OuFJ6WR4lumYCu0SwN0qyVf4kLP2TokAwwFw/edit?slide=id.g328d4427f20_0_0#slide=id.g328d4427f20_0_0[SADR Evaluation slide deck]
+** SADR team’s link:https://docs.google.com/spreadsheets/d/1G3Wedq4voH6tBUYQ2ixZckw_yO37qLMO_8Y7WKs4iYw/edit?gid=1933340803#gid=1933340803[TCO] eval
+* link:https://dagsterlabs.zoom.us/rec/play/7JUBSOoqv8srwQB5XTT2GSJlj7GIK0mTQokZ-y8KS7yFGAXr01qXKhn_zgfTOa8kN40sGy8ub9zfNiCW.W6Ga_wFRztUUAF0N?eagerLoadZvaPages=sidemenu.billing.plan_management&accessLevel=meeting&canPlayFromShare=true&from=share_recording_detail&continueMode=true&pwd=DACLzqcr5rwvP-NoHAAAIAAAAE4NJpouGXGZN8lz4EAqRlXq39jczVx2eRVuOFQm_jEa1nXU8dC-Q_VDNbok3Brp_jAwMDAwNA&componentName=rec-play&originRequestUrl=https%3A%2F%2Fdagsterlabs.zoom.us%2Frec%2Fshare%2FBKEsP7-2ETptLMz0O9qc8l_ACS-1lx1eOcCOojpaZOHHP7ThRvca6zfj60Hd_WHP.DoxdnfJTfTENcpOB%3Fpwd%3DDACLzqcr5rwvP-NoHAAAIAAAAE4NJpouGXGZN8lz4EAqRlXq39jczVx2eRVuOFQm_jEa1nXU8dC-Q_VDNbok3Brp_jAwMDAwNA[Dagster video call]

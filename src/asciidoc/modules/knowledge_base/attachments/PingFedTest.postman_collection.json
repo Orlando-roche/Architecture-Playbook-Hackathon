@@ -1,0 +1,199 @@
+{
+	"info": {
+		"_postman_id": "c824c9c1-4f93-44fe-84aa-c7ef307c71f9",
+		"name": "PingFed Test",
+		"description": "This Postman collection contains two calls for testing PingFed setup. \n\n## Setup Environment\nImport `PingFedEnvironmentTemplate.postman_environment.json` into Postman and replace the Placeholders with the proper values for your clients.\n\n## UserInfo\nWith this call the onboarding of a Client to PingFederate can be tested. The expected response is a Object containing the configured claims from the ID token.\n```\n{\n    \"aud\": \"Genestack\",\n    \"sub\": \"gilsdom1\",\n    \"name\": \"Moritz Gilsdorf\",\n    \"groups\": \"Not_Available\",\n    \"given_name\": \"Moritz\",\n    \"family_name\": \"Gilsdorf\",\n    \"email\": \"moritz.gilsdorf@roche.com\"\n}\n```\n \n## Arvados User\nWith this call a production client configuration can be tested to be working with Arvados. \n\n>**Note:** This requires the user correctly onboarded to Arvados.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Userinfo",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "clientId",
+							"value": "{{clientId}}",
+							"type": "string"
+						},
+						{
+							"key": "accessTokenUrl",
+							"value": "{{iss}}/as/token.oauth2",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "{{iss}}/as/authorization.oauth2",
+							"type": "string"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "{{redirectUri}}",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "tokenName",
+							"value": "{{clientId}}",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "{{clientSecret}}",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code_with_pkce",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "profile openid",
+							"type": "string"
+						},
+						{
+							"key": "challengeAlgorithm",
+							"value": "S256",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "body",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{iss}}/idp/userinfo.openid",
+					"host": [
+						"{{iss}}"
+					],
+					"path": [
+						"idp",
+						"userinfo.openid"
+					],
+					"query": [
+						{
+							"key": "prompt",
+							"value": "select_account",
+							"disabled": true
+						},
+						{
+							"key": "state",
+							"value": "dTj2PDlofr2smSsj2Z1SAGT4p8iSRzDzKZ4AAAwe",
+							"disabled": true
+						},
+						{
+							"key": "return_to",
+							"value": "{{redirectUri}}",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Arvados User",
+			"request": {
+				"auth": {
+					"type": "oauth2",
+					"oauth2": [
+						{
+							"key": "accessTokenUrl",
+							"value": "{{iss}}/as/token.oauth2",
+							"type": "string"
+						},
+						{
+							"key": "authUrl",
+							"value": "{{iss}}/as/authorization.oauth2",
+							"type": "string"
+						},
+						{
+							"key": "useBrowser",
+							"value": false,
+							"type": "boolean"
+						},
+						{
+							"key": "redirect_uri",
+							"value": "{{redirectUri}}",
+							"type": "string"
+						},
+						{
+							"key": "clientId",
+							"value": "{{clientId}}",
+							"type": "string"
+						},
+						{
+							"key": "tokenName",
+							"value": "{{clientId}}",
+							"type": "string"
+						},
+						{
+							"key": "clientSecret",
+							"value": "{{clientSecret}}",
+							"type": "string"
+						},
+						{
+							"key": "grant_type",
+							"value": "authorization_code_with_pkce",
+							"type": "string"
+						},
+						{
+							"key": "scope",
+							"value": "profile openid",
+							"type": "string"
+						},
+						{
+							"key": "challengeAlgorithm",
+							"value": "S256",
+							"type": "string"
+						},
+						{
+							"key": "client_authentication",
+							"value": "body",
+							"type": "string"
+						},
+						{
+							"key": "addTokenTo",
+							"value": "header",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.ardev.roche.com/arvados/v1/users/current",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ardev",
+						"roche",
+						"com"
+					],
+					"path": [
+						"arvados",
+						"v1",
+						"users",
+						"current"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

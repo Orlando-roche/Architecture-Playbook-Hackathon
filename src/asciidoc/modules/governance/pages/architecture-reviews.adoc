@@ -1,0 +1,41 @@
+:moduledir: ..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= Architecture Reviews
+
+[NOTE]
+--
+The table of architecture reviews is maintained in a reverse chronological order for ease of use.
+--
+
+[cols="6*",options="header"]
+|====
+| Date
+| ADR
+| Title
+| Demand Owner
+| Review Document
+| Approval status
+
+| November 11, 2025
+| xref:2025-reviews/adr-25-03_architecture_management.adoc[ADR-25-03]
+| Architecture Management Tool
+| Alex Weigel
+| -
+| Accepted
+
+| October 29, 2025
+| xref:2025-reviews/adr-25-02_orchestration-tool.adoc[ADR-25-02]
+| Orchestration Tool
+| Imran Khan
+| -
+| Accepted
+
+| August 31, 2025
+| xref:2025-reviews/adr-25-01_animal-registry-gari.adoc[ADR-25-01]
+| Animal Registry System for gARI
+| Asif Jan
+| -
+| Accepted
+
+|====

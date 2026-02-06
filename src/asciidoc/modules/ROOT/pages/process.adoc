@@ -1,0 +1,9 @@
+:moduledir: ..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= Architecture Process
+:page-content-owner-email: alex.weigel@roche.com
+
+
+
+

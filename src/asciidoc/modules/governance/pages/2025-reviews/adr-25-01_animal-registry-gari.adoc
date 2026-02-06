@@ -1,0 +1,57 @@
+:moduledir: ../..
+include::{moduledir}/../ROOT/partials/_commons.adoc[]
+
+= ADR-25-01: Animal Registry System for gARI
+
+|===
+| **Status** | Accepted 
+| **Impact** | Medium
+| **Demand Owner** | Asif Jan
+| **ADR Contributors** | Anish Kejariwal, Alex Weigel
+| **Informed** | Ryan Copping, Anna Craig, Imran Khan, Hugo Lam, Olivier Roche, Mark McCreary, Clarisse Chavanne
+| **Publication Date** | August 31, 2025
+|===
+
+== 📗 Background
+
+gARI (gRED Animal Resources Informatics) is a gRED vivarium management system platform. A high priority request was made in May 2025 to the gRED Lab to Insights (new Lab Workflow & Data Domain) and to gRED Data Ecosystems (DE) initiative to provide an animal registry system to gARI. To select an animal registry system for gARI, both the Data Ecosystem registry, and FISH were evaluated:
+
+* Data Ecosystems has a capability team focused on building an entity registry system to address the fragmentation and inconsistency of biological entity registration in gRED.
+* FISH ARS (FAIR In-vivo data SHaring - Animal Registration System) is a component of the pRED in-vivo data landscape. FISH ARS provides globally unique, persistent and resolvable identifiers (GUPRI) for pRED animals
+
+Despite the critical role of biological entity registration, the overall landscape across the REDs is characterized by separate, ad hoc systems and spreadsheets. WS7 Biological Entity Registration (BER) plans to be kicked off in Q3 2025, and the goal is to deliver a foundational capability for managing biological research master data across REDs. It aims to unify the disparate registry systems across the REDs, like FISH ARS and others, into a single, cohesive platform. 
+
+
+
+== ℹ️ Context
+
+On July 23, 2025 gRED communicated the decision to use the Data Ecosystem Registry as the solution for gARI, and said the decision reflected long-term alignment with BER. It was decided not to use FISH ARS as the Animal Registry solution for gARI. 
+
+
+== 🌈 Consequences
+
+People assumed that the DE Registry will be the future recommended solution by BER. The rationale for the decision was not transparent to pRED colleagues.
+
+
+== 🤝 Outcome / Decision
+
+At the time of writing, BER has not yet formally evaluated the existing solutions in the landscape (scheduled as a milestone for 2025). No formal recommendations have been worked on or made publicly available. In effect, the usage of the Data Ecosystem Registry for gARI should be considered as a tactical gRED solution which will be revisited once the BER recommendations have been published. 
+
+=== Actions
+
+. RDE WS7 BER project:
+.. RTS currently maintains two animal data models: a FISH model and a gARI model. The FISH animal model is broader compared to the gARI model, and the two models are also structured very differently. The RTS team should consolidate these into a single animal data model to eliminate redundancy. 
+.. The CS-CoE Enterprise Architecture team and Data team must be consulted by BER before any final decisions are made to ensure transparency and landscape fit. This requirement is already built into the planning for how the BER team will be established.
+. CS-CoE decision making, and the CoE EA (Enterprise Architecture): 
+.. The new CS-CoE should clarify governance and decision making processes,  particularly for the CoE portfolio and RDE WS7 initiatives, with an emphasis on aligning with CoE priorities and architecture.
+.. Architecture decisions which have a broader impact on the landscape of the REDs should have representation from the CS-CoE EA team.
+.. The CoE EA team should provide a proposal outlining how it will operate within the CoE, including how it will provide Architecture Governance.
+
+== 📚 Resources
+
+* link:https://docs.google.com/presentation/d/1UiG3wU5FJyHGVExJpI3VnjONAiboR_mJPj0lodDXb5c/edit?slide=id.g34b8b764b26_0_301#slide=id.g34b8b764b26_0_301[Data Ecosystem Program]
+* link:https://docs.google.com/document/d/1WUkNj6GGzt_knJr7RCNtoGTUzE9GnYiGuiekZTTQ5yE/edit?tab=t.0#heading=h.dkd442z3obrs[DE - UTL - Governance Decision Record - gARI]
+* link:https://sites.google.com/roche.com/fish-project/[FISH FAIR In-vivo data Sharing]
+* link:https://fish.pages.roche.com/documentation/onedoc/fish/115-Business-User-Guide/120-ARS/100-ARS.html[FISH - Animal Registration System Documentation]
+* link:https://pred-arch.pages.roche.com/playbook/pred-arch-playbook/[pRED Architecture Playbook]
+* link:https://sites.google.com/roche.com/sweg/fair-implementation-tools/roche-fair-playbook[Roche FAIR playbook]

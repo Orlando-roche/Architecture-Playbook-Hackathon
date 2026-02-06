@@ -1,0 +1,6 @@
+name: ROOT
+title: CS-CoE Architecture Playbook
+version: true
+nav:
+  - modules/ROOT/nav.adoc
+
