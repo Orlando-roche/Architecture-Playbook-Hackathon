@@ -1,0 +1,135 @@
+# ROOT Pack 03: Reference Architecture and Patterns
+
+> Source: `src/asciidoc/modules/ROOT/pages/cscoe-ref-arch.adoc` and `src/asciidoc/modules/guidelines/pages/guidelines.adoc`
+
+---
+
+## Architecture Guiding Principles
+
+These principles guide our ambitions for how we intend to design, build, scale, and evolve the system landscape across the Computational Sciences Center of Excellence (CS CoE). They reflect our shared architectural commitments and guide the direction we collectively agree to pursue.
+
+**Note**: Deviations should be reviewed through the exception process to ensure consistency and good decision-making.
+
+---
+
+### Principle 1: Start with Business Impact – Deliver, Measure, and Scale What Works
+
+**Description**: We begin by aligning our deliverables to the business objectives defined by the REDs. We deliver iteratively, incorporating continuous customer feedback, and validate our outcomes against the business's success criteria, scaling only what creates proven value.
+
+**Why**: Impact-driven, evidence-based delivery ensures we focus our time and investment on what truly matters. Our patients are waiting.
+
+**Impact**:
+- Clear success criteria for every initiative
+- Strong alignment with business goals and needs
+- Quicker validation of ideas, reducing risk and evolving with evidence
+- Scaling is driven by evidence rather than assumption
+
+---
+
+### Principle 2: Design for Reuse – Modular and Integration-Ready by Design
+
+**Description**: We prioritize reuse by evaluating existing solutions, starting with open-source products, then commercial off-the-shelf solutions, and only considering building from scratch as a last resort, while articulating the architectural rationale when reuse is not viable. Evolving towards modular, loosely coupled, and interoperable components that can be reused and composed ensures accelerated delivery across domains.
+
+**Why**: Reusability mindset reduces duplication and improves ROI, while modular design enables agility, interoperability, and long-term scalability.
+
+**Impact**:
+- Faster delivery with the flexibility to adjust and iterate as needs evolve
+- Reduction of duplicated systems and fragmented tooling - more harmonized landscape
+- Independent evolution of services, enabling easier deprecation and consolidation
+- Greater consistency and architectural coherence data across teams and domains
+
+---
+
+### Principle 3: Innovate at the Core
+
+**Description**: We strive for applying cloud where it makes sense, i.e. cloud-first, cloud-native, SaaS-first, AI-enabled, API-driven architecture that enables rapid innovation and scalability.
+
+- **Cloud-first** means we prioritize the cloud, but are not cloud-only
+- **Cloud-native** means we leverage cloud-providers specific capabilities as an accelerator, rather than being cloud agnostic
+- **AI-ready** means we increasingly embed AI into how we design, build, operate and govern our systems, while also ensuring our systems are AI-ready
+
+**Why**: Enable rapid innovation and integrated ecosystems, and create a seamless environment where machine learning and artificial intelligence technologies can thrive.
+
+**Impact**:
+- Drives rapid innovation
+- More rapid delivery through managed services and SaaS adoption
+- Seamless integration via APIs and open standards
+- Designed for AI from the beginning
+
+---
+
+### Principle 4: Automate for Scale with Embedded Observability
+
+**Description**: We automate repeatable, manual, labor intensive work across infrastructure, applications, data, and processes to scale reliably. We design systems with built-in observability, which includes usage monitoring of applications, so we can continuously debug, understand, and improve them.
+
+**Why**: Automation enables scale without proportional effort and reduces operational risk. Observability ensures we can detect, diagnose, and improve continuously.
+
+**Impact**:
+- Faster detection and resolution of issues
+- Supports rapid scaling without proportional increases in effort or resources
+- Enables consistent, repeatable processes that can be measured and optimized
+- More time and focus for innovation
+
+---
+
+### Principle 5: Collaborate to Elevate
+
+**Description**: We collaborate, communicate transparently and share knowledge, designs, code, and decisions to achieve collective outcomes and foster trust. We will work in the open (e.g. documented designs and code, documented decisions, peer reviews) and ensure artifacts are searchable.
+
+**Why**: Open collaboration accelerates innovation and builds alignment across diverse teams and disciplines.
+
+**Impact**:
+- Strengthens relationships, build credibility and trust - crucial for gaining consensus
+- Promotes exchange of ideas, data, and components
+- Accelerates decision-making process across the organization through transparency
+- A learning culture that attracts and retains talent
+
+---
+
+### Principle 6: Secure & Compliant by Default
+
+**Description**: We embed security, privacy, and compliance into every design — not as an afterthought - in alignment with Roche corporate guidelines. This includes patient data, licensed/purchased data with contractual restrictions, and data subject to geographic or jurisdictional regulations.
+
+**Why**: Protecting our intellectual property and data is essential for sustainable innovation, faster delivery, and regulatory compliance.
+
+**Impact**:
+- Reduces risk of data loss, non-compliance, and rework through early, built-in controls
+- Increases transparency and strengthens confidence in audit readiness
+- Accelerates delivery by automating security and governance
+- Enables seamless collaboration and data sharing across domains
+
+---
+
+### Principle 7: Design for Resilience and Adaptability
+
+**Description**: We architect solutions with modularity and flexibility, embedding fault tolerance as a core design tenant. In research and early development, our business priorities shift rapidly, data modalities evolve, and workflows and technologies are constantly changing and improving.
+
+**Why**: In gRED and pRED, business priorities, technologies, and regulatory landscapes continuously evolve. Systems that cannot adapt quickly or recover gracefully from disruptions slow down innovation, productivity and increase operational risk.
+
+**Impact**:
+- Lower cost for adapting to rapid changes to business processes
+- Higher uptime and resilience during scientific experiment cycles that cannot be disrupted or delayed
+- Reduce downtime, minimizes cost of change
+- Ensures technology investments remain relevant and dependable even under constant evolution
+
+---
+
+### Principle 8: FAIR Data By Design
+
+**Description**: We ensure all systems, applications, pipelines, and processes are designed to enable Findable, Accessible, Interoperable, and Reusable (FAIR) data from creation through consumption. Data is core to everything we do in the CS CoE.
+
+**Why**: FAIR data accelerates discovery, enables reproducibility, and can power AI. It ensures that data can be trusted, reused, and integrated seamlessly across the ecosystem.
+
+**Impact**:
+- Data is easily discoverable through searchable metadata
+- Access is secure, automated, traceable with the right governance structure
+- Enable cross-domain interoperability
+- Improve reproducibility and accelerate AI development
+
+---
+
+## Reference Architecture
+
+*Note: The Reference Architecture section is currently under development. Check the source documentation for updates.*
+
+The CS-CoE Reference Architecture provides patterns and guidance for building systems that align with our guiding principles.
