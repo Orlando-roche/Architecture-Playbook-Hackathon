@@ -4,94 +4,94 @@ Complete table of contents for the CS-CoE Architecture Playbook.
 
 ---
 
-## ROOT Module (Core Playbook)
+## AI Content Packs
 
-| Page | Title | Path |
-|------|-------|------|
-| index.adoc | CS-CoE Architecture Playbook | `src/asciidoc/modules/ROOT/pages/index.adoc` |
-| architecture_catalyst_role.adoc | Architecture Catalyst Role | `src/asciidoc/modules/ROOT/pages/architecture_catalyst_role.adoc` |
-| bodies.adoc | Architecture Bodies | `src/asciidoc/modules/ROOT/pages/bodies.adoc` |
-| process.adoc | Architecture Process | `src/asciidoc/modules/ROOT/pages/process.adoc` |
-| team.adoc | Architecture Community | `src/asciidoc/modules/ROOT/pages/team.adoc` |
-| cscoe-ref-arch.adoc | Reference Architecture | `src/asciidoc/modules/ROOT/pages/cscoe-ref-arch.adoc` |
+| Pack | Description | Topics Covered |
+|------|-------------|----------------|
+| [Governance.md](packs/Governance.md) | Architecture governance, bodies, roles, principles, guardrails | Organization, Architecture Bodies, Catalyst Role, Guiding Principles, Guardrails |
+| [ADRs.md](packs/ADRs.md) | Architecture Decision Records | All approved/accepted ADRs from 2025 |
+| [KnowledgeBase.md](packs/KnowledgeBase.md) | Developer resources and how-tos | Tools, Licenses, Security, Authentication, Authorization |
 
 ---
 
-## Guidelines Module
+## Governance Pack Contents
 
-| Page | Title | Path |
-|------|-------|------|
-| guidelines.adoc | Architecture Guiding Principles | `src/asciidoc/modules/guidelines/pages/guidelines.adoc` |
-| guardrails.adoc | Architecture Guardrails | `src/asciidoc/modules/guidelines/pages/guardrails.adoc` |
-| iam.adoc | Identity and Access Management | `src/asciidoc/modules/guidelines/pages/iam.adoc` |
-
----
-
-## Governance Module (ADRs)
-
-| Page | Title | Path |
-|------|-------|------|
-| architecture-reviews.adoc | Architecture Reviews | `src/asciidoc/modules/governance/pages/architecture-reviews.adoc` |
-
-### 2025 Reviews
-
-| Page | Title | Path |
-|------|-------|------|
-| adr-25-01_animal-registry-gari.adoc | ADR-25-01: Animal Registry System for gARI | `src/asciidoc/modules/governance/pages/2025-reviews/adr-25-01_animal-registry-gari.adoc` |
-| adr-25-02_orchestration-tool.adoc | ADR-25-02: Orchestration Tool | `src/asciidoc/modules/governance/pages/2025-reviews/adr-25-02_orchestration-tool.adoc` |
-| adr-25-03_architecture_management.adoc | ADR-25-03: Architecture Management Tool | `src/asciidoc/modules/governance/pages/2025-reviews/adr-25-03_architecture_management.adoc` |
+| Topic | Description |
+|-------|-------------|
+| CS-CoE Architecture Playbook | Overview and purpose |
+| Architecture Community | Architecture Group and Catalysts |
+| Architecture Bodies | Core Team, Council, Review Forum, Workgroups |
+| Architecture Catalyst Role | Bridge between Architecture and organization |
+| Architecture Guiding Principles | 8 principles for design and implementation |
+| Architecture Guardrails | Boundaries and compliance requirements |
 
 ---
 
-## Knowledge Base Module
+## ADRs Pack Contents
 
-### Development
-
-| Page | Title | Path |
-|------|-------|------|
-| jetbrains-licenses.adoc | CS CoE JetBrains Licenses | `src/asciidoc/modules/knowledge_base/pages/jetbrains-licenses.adoc` |
-| renovate-bot.adoc | Roche Renovate Bot | `src/asciidoc/modules/knowledge_base/pages/renovate-bot.adoc` |
-| data-workflow-pipeline.adoc | Data Workflow Pipeline | `src/asciidoc/modules/knowledge_base/pages/data-workflow-pipeline.adoc` |
-| developer-quickstart.adoc | Developer Quickstart | `src/asciidoc/modules/knowledge_base/pages/developer-quickstart.adoc` |
-| low_code_platforms.adoc | Low Code Platforms | `src/asciidoc/modules/knowledge_base/pages/low_code_platforms.adoc` |
-| open-source.adoc | Open Source | `src/asciidoc/modules/knowledge_base/pages/open-source.adoc` |
-
-### Security
-
-| Page | Title | Path |
-|------|-------|------|
-| it_security_authentication.adoc | Authentication | `src/asciidoc/modules/knowledge_base/pages/it_security_authentication.adoc` |
-| it_security_authorisation.adoc | Authorization | `src/asciidoc/modules/knowledge_base/pages/it_security_authorisation.adoc` |
-| it_security_certificates.adoc | Certificates | `src/asciidoc/modules/knowledge_base/pages/it_security_certificates.adoc` |
-| it-security-cve.adoc | Common Vulnerabilities and Exposures | `src/asciidoc/modules/knowledge_base/pages/it-security-cve.adoc` |
+| ADR | Title | Status | Date |
+|-----|-------|--------|------|
+| ADR-25-01 | Animal Registry System for gARI | Accepted | Aug 2025 |
+| ADR-25-02 | Orchestration Tool (Dagster) | Accepted | Oct 2025 |
+| ADR-25-03 | Architecture Management Tool | Accepted | Nov 2025 |
 
 ---
 
-## AI-Optimized Packs
+## Knowledge Base Pack Contents
 
-| Pack | Description | Path |
-|------|-------------|------|
-| ROOT__01_overview_org_roles.md | Organization and roles | `ai/packs/ROOT__01_overview_org_roles.md` |
-| ROOT__02_processes_reviews_decisions.md | Processes and reviews | `ai/packs/ROOT__02_processes_reviews_decisions.md` |
-| ROOT__03_reference_architecture_patterns.md | Principles and patterns | `ai/packs/ROOT__03_reference_architecture_patterns.md` |
-| ROOT__04_templates_checklists_examples.md | Templates and examples | `ai/packs/ROOT__04_templates_checklists_examples.md` |
-| GUIDELINES__guardrails_standards.md | Guardrails and standards | `ai/packs/GUIDELINES__guardrails_standards.md` |
-| KB__howtos_top.md | Top how-to articles | `ai/packs/KB__howtos_top.md` |
-| KB__troubleshooting_pitfalls.md | Troubleshooting guides | `ai/packs/KB__troubleshooting_pitfalls.md` |
-| ADRS__recent.md | 2025 ADRs | `ai/packs/ADRS__recent.md` |
-| ADRS__archive.md | Pre-2025 ADRs | `ai/packs/ADRS__archive.md` |
+| Topic | Description |
+|-------|-------------|
+| Developer Quickstart | DevHub, GitLab, Artifactory, Inner Source |
+| JetBrains Licenses | CS CoE floating licenses, activation |
+| Renovate Bot | Automatic dependency updates |
+| Docker at Roche | Licensing and alternatives |
+| GitHub Copilot | License application |
+| CVEs | Vulnerability handling and timeframes |
+| Open Source Compliance | License compliance, SBOM |
+| Authentication | PingFederate SSO, OAuth 2.0 |
+| Authorization | RedPanda, pREDiLogin, IAM Proxy APIs |
+| Certificates | Server and client certificates |
+| Data Workflow Documentation | Best practices |
+| Low-Code Platforms | APEX, Monday.com, LEAP |
 
 ---
 
-## Quick Navigation
+## Source Files Reference
 
-| I want to... | Go to |
-|--------------|-------|
-| Understand the organization | `ROOT__01_overview_org_roles.md` |
-| Learn about the review process | `ROOT__02_processes_reviews_decisions.md` |
-| See architecture principles | `ROOT__03_reference_architecture_patterns.md` |
-| Find templates | `ROOT__04_templates_checklists_examples.md` |
-| Check guardrails | `GUIDELINES__guardrails_standards.md` |
-| Get developer help | `KB__howtos_top.md` |
-| Troubleshoot issues | `KB__troubleshooting_pitfalls.md` |
-| Review past decisions | `ADRS__recent.md` |
+### ROOT Module
+| File | Path |
+|------|------|
+| index.adoc | `src/asciidoc/modules/ROOT/pages/index.adoc` |
+| team.adoc | `src/asciidoc/modules/ROOT/pages/team.adoc` |
+| bodies.adoc | `src/asciidoc/modules/ROOT/pages/bodies.adoc` |
+| architecture_catalyst_role.adoc | `src/asciidoc/modules/ROOT/pages/architecture_catalyst_role.adoc` |
+| process.adoc | `src/asciidoc/modules/ROOT/pages/process.adoc` |
+| cscoe-ref-arch.adoc | `src/asciidoc/modules/ROOT/pages/cscoe-ref-arch.adoc` |
+
+### Guidelines Module
+| File | Path |
+|------|------|
+| guidelines.adoc | `src/asciidoc/modules/guidelines/pages/guidelines.adoc` |
+| guardrails.adoc | `src/asciidoc/modules/guidelines/pages/guardrails.adoc` |
+| iam.adoc | `src/asciidoc/modules/guidelines/pages/iam.adoc` |
+
+### Governance Module (ADRs)
+| File | Path |
+|------|------|
+| adr-25-01_animal-registry-gari.adoc | `src/asciidoc/modules/governance/pages/2025-reviews/adr-25-01_animal-registry-gari.adoc` |
+| adr-25-02_orchestration-tool.adoc | `src/asciidoc/modules/governance/pages/2025-reviews/adr-25-02_orchestration-tool.adoc` |
+| adr-25-03_architecture_management.adoc | `src/asciidoc/modules/governance/pages/2025-reviews/adr-25-03_architecture_management.adoc` |
+
+### Knowledge Base Module
+| File | Path |
+|------|------|
+| developer-quickstart.adoc | `src/asciidoc/modules/knowledge_base/pages/developer-quickstart.adoc` |
+| jetbrains-licenses.adoc | `src/asciidoc/modules/knowledge_base/pages/jetbrains-licenses.adoc` |
+| renovate-bot.adoc | `src/asciidoc/modules/knowledge_base/pages/renovate-bot.adoc` |
+| it-security-cve.adoc | `src/asciidoc/modules/knowledge_base/pages/it-security-cve.adoc` |
+| open-source.adoc | `src/asciidoc/modules/knowledge_base/pages/open-source.adoc` |
+| it_security_authentication.adoc | `src/asciidoc/modules/knowledge_base/pages/it_security_authentication.adoc` |
+| it_security_authorisation.adoc | `src/asciidoc/modules/knowledge_base/pages/it_security_authorisation.adoc` |
+| it_security_certificates.adoc | `src/asciidoc/modules/knowledge_base/pages/it_security_certificates.adoc` |
+| data-workflow-pipeline.adoc | `src/asciidoc/modules/knowledge_base/pages/data-workflow-pipeline.adoc` |
+| low_code_platforms.adoc | `src/asciidoc/modules/knowledge_base/pages/low_code_platforms.adoc` |

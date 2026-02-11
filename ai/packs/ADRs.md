@@ -1,16 +1,18 @@
-# ADRs Pack: Recent Architecture Decision Records (2025)
+# Architecture Decision Records (ADRs)
 
 > Source: `src/asciidoc/modules/governance/pages/2025-reviews/`
 
 ---
 
-## ADR Index (2025)
+## Summary
 
-| ADR | Title | Date | Status | Impact |
-|-----|-------|------|--------|--------|
-| ADR-25-03 | Architecture Management Tool | November 11, 2025 | Accepted | Medium |
-| ADR-25-02 | Orchestration Tool | October 29, 2025 | Accepted | Low |
-| ADR-25-01 | Animal Registry System for gARI | August 31, 2025 | Accepted | Medium |
+| ID | Title | Date | Status | Impact | Demand Owner |
+|----|-------|------|--------|--------|--------------|
+| ADR-25-01 | Animal Registry System for gARI | Aug 31, 2025 | Accepted | Medium | Asif Jan |
+| ADR-25-02 | Orchestration Tool | Oct 29, 2025 | Accepted | Low | Imran Khan |
+| ADR-25-03 | Architecture Management Tool | Nov 11, 2025 | Accepted | Medium | Alex Weigel |
+
+**Total ADRs**: 3 (all accepted/approved in 2025)
 
 ---
 
@@ -28,8 +30,8 @@
 
 gARI (gRED Animal Resources Informatics) is a gRED vivarium management system platform. A high priority request was made in May 2025 to provide an animal registry system to gARI. Two solutions were evaluated:
 
-1. **Data Ecosystems Registry** - A capability team focused on building an entity registry system
-2. **FISH ARS** - A component of the pRED in-vivo data landscape providing globally unique, persistent and resolvable identifiers (GUPRI) for pRED animals
+1. **Data Ecosystems Registry** - A capability team focused on building an entity registry system to address fragmentation of biological entity registration in gRED
+2. **FISH ARS** (FAIR In-vivo data SHaring - Animal Registration System) - A component of the pRED in-vivo data landscape providing globally unique, persistent and resolvable identifiers (GUPRI) for pRED animals
 
 ### Context
 
@@ -69,17 +71,19 @@ The CoE organization lacked a standardized, modern orchestration platform for da
 - AI4DD (formerly MLDD): first adopters of Dagster
 - gRED MLOps: selected Dagster over Kubeflow as part of initiative approval
 
+The gRED Data Ecosystem leadership decided in April 2025 to fund a 1-year Dagster+ license (~$150k) with 15 seats as a seed-and-grow strategy.
+
 ### Context
 
 The decision to purchase Dagster+ was made in the legacy gCS organization as part of the gRED Data Ecosystem initiative. With the creation of the CS-CoE organization in July 2025, this ADR documents the rationale, scope, and strategy.
 
 ### Decision
 
-Complete the purchase of the 1-year Dagster+ license (~$150k). This decision:
+Complete the purchase of the 1-year Dagster+ license. This decision:
 
 - **Does not** establish Dagster+ as the data pipeline orchestration standard for the CoE
 - **Does not** imply Dagster+ will be the standard for MLOps in CoE
-- Provides a seed-and-grow pilot strategy
+- Provides a **seed-and-grow pilot strategy**
 
 ### Rationale for Dagster
 
@@ -93,11 +97,19 @@ Complete the purchase of the 1-year Dagster+ license (~$150k). This decision:
 
 | Tool | Status |
 |------|--------|
-| Kubeflow | Successfully in production in legacy D&A, but complex API |
+| Kubeflow | In production in legacy D&A, complex API |
 | Apache Airflow | Used in legacy D&A and gCS, weaker observability |
-| SageMaker Pipelines | Previously used, experienced slow deployment |
+| SageMaker Pipelines | Previously used, slow deployment |
 | Nextflow | In active use with gRED FDFM |
-| Argo Workflows | Successfully used in Spring Sciences platform |
+| Argo Workflows | Used in Spring Sciences platform |
+
+### Why Dagster+ over Dagster OSS?
+
+- Branch deployments (requested by AI4DD)
+- Launcher role
+- Vendor support
+- Role-based user management
+- Managed (SaaS) control plane
 
 ### Follow-up
 
@@ -116,7 +128,7 @@ Formal checkpoint in Q1 2026 to evaluate:
 
 | Field | Value |
 |-------|-------|
-| Status | Draft |
+| Status | Accepted |
 | Impact | Medium |
 | Demand Owner | Alex Weigel |
 | ADR Contributors | Saima Sherazi, Anish Kejariwal |
@@ -127,6 +139,7 @@ Formal checkpoint in Q1 2026 to evaluate:
 The CS-CoE was established to unify and modernize the computation and data ecosystems across Roche's Research and Early Development (RED) organizations. An architecture management tool is required that supports documentation, analysis, and communication of architectural assets.
 
 Two candidate solutions emerged:
+
 1. **pRED Architecture Master Repository (AMR)** - Developed and used within pRED
 2. **Archimedes** - Global vendor solution offered by Roche Digital Technology (RDT)
 
@@ -147,7 +160,7 @@ A **phased strategy** is recommended:
 
 1. **Continue leveraging AMR** as the operational architecture management tool
    - Extend scope to include both pRED and gRED
-   - Establish common taxonomies
+   - Establish common taxonomies (Business Capabilities, Data Objects)
    - Onboard gRED applications
 
 2. **Engage with RDT** to:
