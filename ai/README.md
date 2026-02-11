@@ -119,19 +119,3 @@ ai/
     ├── ADRs.md         # Architecture Decision Records
     └── KnowledgeBase.md # Developer tools, security, how-tos
 ```
-
----
-
-## Usage
-
-### For ChatGPT GPT Setup
-
-1. Upload all files from `ai/` to the GPT Knowledge folder
-2. Configure instructions to reference these files
-3. Set conversation starters for common queries
-
-### For Content Updates
-
-1. Edit source files in `src/asciidoc/modules/`
-2. Regenerate the corresponding pack in `ai/packs/`
-3. Re-upload to ChatGPT Knowledge if using uploaded files
