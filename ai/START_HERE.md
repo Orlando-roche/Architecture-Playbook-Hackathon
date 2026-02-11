@@ -6,21 +6,11 @@ The CS-CoE Architecture Playbook is a collection of best practices, guidelines, 
 
 ## How to Use This Content
 
-### Quick Answers
-Ask direct questions like:
-- "What are the architecture guiding principles?"
-- "How do I request an architecture review?"
-- "What is the process for getting JetBrains licenses?"
-
-### Deep Dives
-For comprehensive understanding, reference specific packs:
-- "Summarize the content in ROOT__01_overview_org_roles.md"
-- "What guardrails are defined in GUIDELINES__guardrails_standards.md?"
-
 ### Finding Content
 - Use `PLAYBOOK_INDEX.md` to locate specific topics
 - Use `ADR_INDEX.md` to find architecture decisions
 - Use `GLOSSARY.md` for term definitions
+- Use `READING_PATHS`for pre-defined reading paths
 
 ## Recommended Starting Points
 
@@ -30,15 +20,3 @@ For comprehensive understanding, reference specific packs:
 | Building something | `packs/GUIDELINES__guardrails_standards.md` |
 | Preparing for review | `packs/ROOT__02_processes_reviews_decisions.md` |
 | Looking for how-tos | `packs/KB__howtos_top.md` |
-
-## Expected Answer Format
-
-When asking questions, you can request specific formats:
-- "Give me a bullet-point summary of..."
-- "Create a checklist for..."
-- "Explain in simple terms..."
-- "Compare X and Y from the playbook..."
-
-## Content Freshness
-
-This AI-optimized content is derived from the main playbook. Check `meta/generation_report.md` for the last update date.
