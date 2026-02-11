@@ -8,9 +8,9 @@ This directory contains AI-optimized versions of the CS-CoE Architecture Playboo
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                              GITHUB REPOSITORY                               │
-│                    (Source of Truth - Architecture Playbook)                 │
-│                                                                              │
+│                              GITHUB REPOSITORY                              │
+│                    (Source of Truth - Architecture Playbook)                │
+│                                                                             │
 │  ┌─────────────────────────────────┐    ┌─────────────────────────────────┐ │
 │  │     src/asciidoc/modules/       │    │           ai/                   │ │
 │  │     (Canonical Content)         │    │    (AI-Optimized Metadata)      │ │
@@ -26,16 +26,16 @@ This directory contains AI-optimized versions of the CS-CoE Architecture Playboo
 │  │                                 │    │   optimized for LLM retrieval)  │ │
 │  │  (.adoc files - human-readable) │    │  (.md files - AI-readable)      │ │
 │  └─────────────────────────────────┘    └─────────────────────────────────┘ │
-│                                                       │                      │
-└───────────────────────────────────────────────────────┼──────────────────────┘
+│                                                       │                     │
+└───────────────────────────────────────────────────────┼─────────────────────┘
                                                         │
                                                         │ HTTPS fetch
                                                         │ (raw.githubusercontent.com)
                                                         ▼
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                              CHATGPT GPT                                     │
-│                     (Architecture Playbook Assistant)                        │
-│                                                                              │
+│                              CHATGPT GPT                                    │
+│                     (Architecture Playbook Assistant)                       │
+│                                                                             │
 │  ┌─────────────────────┐    ┌─────────────────────┐    ┌──────────────────┐ │
 │  │    Instructions     │    │   Knowledge Files   │    │   User Query     │ │
 │  │                     │    │   (uploaded .md)    │    │                  │ │
@@ -57,15 +57,15 @@ This directory contains AI-optimized versions of the CS-CoE Architecture Playboo
                                                                   │
                                                                   ▼
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                              USER RESPONSE                                       │
-│                                                                                  │
-│  Answer                                                                          │
+│                              USER RESPONSE                                      │
+│                                                                                 │
+│  Answer                                                                         │
 │  3 ADRs approved in 2025: ADR-25-01 (Animal Registry), ADR-25-02                │
-│  (Orchestration Tool), ADR-25-03 (Architecture Management)                       │
-│                                                                                  │
-│  Sources                                                                         │
+│  (Orchestration Tool), ADR-25-03 (Architecture Management)                      │
+│                                                                                 │
+│  Sources                                                                        │
 │  github.com/.../src/asciidoc/modules/governance/pages/2025-reviews/...          │
-│                                                                                  │
+│                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
 ```
 
