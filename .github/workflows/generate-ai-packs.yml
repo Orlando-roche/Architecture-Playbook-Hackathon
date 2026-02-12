@@ -8,7 +8,6 @@ jobs:
   generate-packs:
     runs-on: ubuntu-latest
     
-    # Skip if commit message contains [skip ci]
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     
     steps:
@@ -25,6 +24,27 @@ jobs:
         run: |
           chmod +x scripts/generate-ai-packs.sh
           ./scripts/generate-ai-packs.sh
+
+      - name: Check pack sizes (token limit warning)
+        run: |
+          echo "Checking AI pack sizes..."
+          MAX_CHARS=400000  # ~100K tokens
+          WARN_CHARS=200000 # ~50K tokens - warning threshold
+          
+          for file in ai/packs/*.md; do
+            chars=$(wc -c < "$file")
+            tokens=$((chars / 4))
+            filename=$(basename "$file")
+            
+            if [ "$chars" -gt "$MAX_CHARS" ]; then
+              echo "::error file=$file::$filename exceeds token limit: ~$tokens tokens ($chars chars). Consider splitting."
+              exit 1
+            elif [ "$chars" -gt "$WARN_CHARS" ]; then
+              echo "::warning file=$file::$filename is large: ~$tokens tokens ($chars chars). Monitor growth."
+            else
+              echo "✓ $filename: ~$tokens tokens ($chars chars)"
+            fi
+          done
           
       - name: Check for changes
         id: check
