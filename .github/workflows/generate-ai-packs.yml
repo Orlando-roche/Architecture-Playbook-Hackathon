@@ -14,11 +14,12 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y asciidoctor pandoc
+
+      - name: Cache apt packages
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: asciidoctor pandoc
+          version: 1.0
           
       - name: Generate AI packs
         run: |
@@ -42,4 +43,3 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git commit -m "Auto-generate AI packs [skip ci]"
           git push
-
