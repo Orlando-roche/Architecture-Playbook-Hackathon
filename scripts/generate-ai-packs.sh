@@ -29,41 +29,18 @@ validate_directories() {
 }
 
 # =============================================================================
-# Convert AsciiDoc to Markdown
+# Cleanup markdown content (removes broken images, links, emojis, etc.)
 # =============================================================================
-convert_adoc_to_md() {
-    local input_file="$1"
-    local content
-    
-    # Try asciidoctor + pandoc first
-    if command -v asciidoctor &> /dev/null && command -v pandoc &> /dev/null; then
-        content=$(asciidoctor -b docbook -o - "$input_file" 2>/dev/null | \
-                  pandoc -f docbook -t gfm --wrap=none 2>/dev/null) || content=""
-    fi
-    
-    # Fallback to sed-based conversion
-    if [ -z "$content" ]; then
-        content=$(cat "$input_file" | sed -E '
-            /^:.*:/d
-            /^include::/d
-            s/^= (.*)$/# \1/
-            s/^== (.*)$/## \1/
-            s/^=== (.*)$/### \1/
-            s/^==== (.*)$/#### \1/
-            s/xref:[^[]*\[([^\]]*)\]/\1/g
-            s/^\|===.*$//
-            s/^\[NOTE\]$/> **Note**/
-            s/^--$//
-        ')
-    fi
-    
-    # Post-process: Clean up content
-    content=$(echo "$content" | sed -E '
+cleanup_markdown() {
+    sed -E '
         # Remove markdown image references (broken paths)
         s/!\[[^\]]*\]\([^)]*\)//g
         
-        # Remove broken markdown links but keep text
+        # Remove broken markdown links but keep text: [text](broken.xml) -> text
         s/\[([^\]]*)\]\([^)]*\.(xml|adoc)\)/\1/g
+        
+        # Remove AsciiDoc-style links: link:url[text] -> text
+        s/link:[^\[]*\[([^\]]*)\]/\1/g
         
         # Remove emojis
         s/📗//g
@@ -74,12 +51,62 @@ convert_adoc_to_md() {
         s/✅//g
         s/❌//g
         s/⚠️//g
+        s/🔗//g
+        s/📋//g
+        s/🎯//g
         
-        # Clean up AsciiDoc variables
+        # Clean up AsciiDoc variables like {org-name}
         s/\{[a-zA-Z_-]*\}//g
-    ')
+        
+        # Remove leftover empty image alt text artifacts
+        s/\[\]//g
+        
+        # Clean up multiple consecutive blank lines (reduce to single)
+        /^$/N
+        /^\n$/d
+    '
+}
+
+# =============================================================================
+# Convert AsciiDoc to Markdown
+# =============================================================================
+convert_adoc_to_md() {
+    local input_file="$1"
+    local content=""
     
-    echo "$content"
+    # Try asciidoctor + pandoc first
+    if command -v asciidoctor &> /dev/null && command -v pandoc &> /dev/null; then
+        content=$(asciidoctor -b docbook -o - "$input_file" 2>/dev/null | \
+                  pandoc -f docbook -t gfm --wrap=none 2>/dev/null) || content=""
+    fi
+    
+    # Fallback to sed-based conversion if pandoc failed or not available
+    if [ -z "$content" ]; then
+        content=$(cat "$input_file" | sed -E '
+            # Remove AsciiDoc directives and includes
+            /^:.*:/d
+            /^include::/d
+            
+            # Convert headings (= to #)
+            s/^= (.*)$/# \1/
+            s/^== (.*)$/## \1/
+            s/^=== (.*)$/### \1/
+            s/^==== (.*)$/#### \1/
+            
+            # Remove xref links, keep link text
+            s/xref:[^[]*\[([^\]]*)\]/\1/g
+            
+            # Convert simple table markers
+            s/^\|===.*$//
+            
+            # Convert NOTE blocks
+            s/^\[NOTE\]$/> **Note**/
+            s/^--$//
+        ')
+    fi
+    
+    # ALWAYS apply cleanup to all output (pandoc or sed)
+    echo "$content" | cleanup_markdown
 }
 
 # =============================================================================
@@ -92,15 +119,22 @@ extract_adr_metadata() {
     # Extract ADR ID from filename (e.g., adr-25-01_animal-registry -> ADR-25-01)
     local adr_id=$(echo "$filename" | sed -E 's/^(adr-[0-9]+-[0-9]+).*/\1/' | tr '[:lower:]' '[:upper:]')
     
-    # Extract title from first heading
-    local title=$(grep -m1 "^= " "$file" | sed 's/^= //')
+    # Extract title from first heading, remove ADR ID prefix if present
+    local title=$(grep -m1 "^= " "$file" | sed 's/^= //' | sed -E "s/^ADR-[0-9]+-[0-9]+: ?//")
     
-    # Extract status
-    local status=$(grep -i "Status" "$file" | head -1 | sed -E 's/.*\| *([A-Za-z]+).*/\1/' | tr -d '|* ')
+    # Extract status (handle various table formats)
+    local status=$(grep -iE "^\|.*Status.*\|" "$file" | head -1 | sed -E 's/.*\| *([A-Za-z]+) *\|?.*/\1/' | tr -d '|* ')
+    if [ -z "$status" ]; then
+        status=$(grep -iE "Status" "$file" | head -1 | grep -oE "(Accepted|Draft|Rejected|Superseded)" | head -1)
+    fi
     [ -z "$status" ] && status="Unknown"
     
-    # Extract date
-    local date=$(grep -i "Publication Date" "$file" | head -1 | sed -E 's/.*\| *([^|]+).*/\1/' | tr -d '|* ')
+    # Extract date (handle various formats, preserve spaces)
+    local date=$(grep -iE "Publication Date" "$file" | head -1 | sed -E 's/.*\| *([A-Za-z]+ [0-9]+, [0-9]+).*/\1/' | tr -d '|*')
+    if [ -z "$date" ] || [ "$date" = "$(grep -iE 'Publication Date' "$file" | head -1)" ]; then
+        # Try alternate extraction
+        date=$(grep -iE "Publication Date" "$file" | head -1 | grep -oE "[A-Z][a-z]+ [0-9]+, [0-9]+" | head -1)
+    fi
     [ -z "$date" ] && date="Unknown"
     
     echo "| $adr_id | $title | $status | $date |"
