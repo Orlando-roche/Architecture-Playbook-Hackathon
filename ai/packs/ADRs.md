@@ -1,6 +1,21 @@
 # Architecture Decision Records (ADRs)
+
 > Source: `src/asciidoc/modules/governance/pages/2025-reviews/`
+
 ---
+
+## Summary
+
+| ID | Title | Status | Date |
+|----|-------|--------|------|
+| ADR-25-01 | Animal Registry System for gARI | Accepted | August 31, 2025 |
+| ADR-25-02 | Orchestration Tool | Accepted | October 29, 2025 |
+| ADR-25-03 | CS-CoE Architecture Management Tool | Draft | November 11, 2025 |
+
+---
+
+## Full ADR Details
+
 
 |                      |                                                                                                 |
 |----------------------|-------------------------------------------------------------------------------------------------|
@@ -62,6 +77,7 @@ At the time of writing, BER has not yet formally evaluated the existing solution
 - [pRED Architecture Playbook](https://pred-arch.pages.roche.com/playbook/pred-arch-playbook/)
 
 - [Roche FAIR playbook](https://sites.google.com/roche.com/sweg/fair-implementation-tools/roche-fair-playbook)
+
 ---
 
 |                      |                                                                                                                                                                      |
@@ -234,6 +250,7 @@ A formal checkpoint will occur in Q1 2026 led by Enterprise Architecture to revi
   - SADR team’s [TCO](https://docs.google.com/spreadsheets/d/1G3Wedq4voH6tBUYQ2ixZckw_yO37qLMO_8Y7WKs4iYw/edit?gid=1933340803#gid=1933340803) eval
 
 - [Dagster video call](https://dagsterlabs.zoom.us/rec/play/7JUBSOoqv8srwQB5XTT2GSJlj7GIK0mTQokZ-y8KS7yFGAXr01qXKhn_zgfTOa8kN40sGy8ub9zfNiCW.W6Ga_wFRztUUAF0N?eagerLoadZvaPages=sidemenu.billing.plan_management&accessLevel=meeting&canPlayFromShare=true&from=share_recording_detail&continueMode=true&pwd=DACLzqcr5rwvP-NoHAAAIAAAAE4NJpouGXGZN8lz4EAqRlXq39jczVx2eRVuOFQm_jEa1nXU8dC-Q_VDNbok3Brp_jAwMDAwNA&componentName=rec-play&originRequestUrl=https%3A%2F%2Fdagsterlabs.zoom.us%2Frec%2Fshare%2FBKEsP7-2ETptLMz0O9qc8l_ACS-1lx1eOcCOojpaZOHHP7ThRvca6zfj60Hd_WHP.DoxdnfJTfTENcpOB%3Fpwd%3DDACLzqcr5rwvP-NoHAAAIAAAAE4NJpouGXGZN8lz4EAqRlXq39jczVx2eRVuOFQm_jEa1nXU8dC-Q_VDNbok3Brp_jAwMDAwNA)
+
 ---
 
 |                  |                                |
@@ -378,4 +395,5 @@ This approach maintains domain-specific flexibility, and positions the CS-CoE fo
 - [Archimedes wiki](https://rochewiki.roche.com/confluence/display/GIA/ArchiMEDES)
 
 - [AMR](https://go.roche.com/amr)
+
 ---

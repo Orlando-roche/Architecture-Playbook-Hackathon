@@ -1,5 +1,7 @@
 # Governance
+
 > Sources: `src/asciidoc/modules/ROOT/pages/`, `src/asciidoc/modules/guidelines/pages/`
+
 ---
 
 The introduction of the Architecture Catalyst role is a strategic decision to mitigate the risk of the Core Architecture group becoming a bottleneck and to drive value across the CS-CoE by establishing robust and trustworthy relationships.
@@ -19,6 +21,7 @@ Architecture Catalysts are individuals within the organization who act as a brid
 - First Contact Point: They serve as the first point of contact for communication between their respective department and the Architecture team.
 
 - Guardrail Adherence: They are responsible for ensuring that Architecture best practices and processes are followed.
+
 ---
 
 Our operating model relies on defined architectural bodies to ensure coherent, consistent, and scalable architecture practices across the CS-CoE and the broader organization. These bodies provide the structure for review, alignment, and approval of significant design choices, collectively overseeing the architectural direction and governance.
@@ -62,17 +65,21 @@ Rapid, Cross-Functional Execution for Targeted Architecture Needs.
 - Outcome-focused: produce concrete deliverables such as blueprints, design proposals or standards.
 
 - Each workgroup has a dedicated lead who ensures focus, progress and delivery.
+
 ---
 
 
 # Reference Architecture
+
 ---
 
 The CS-CoE Architecture Playbook is a collection of best practices, guidelines, and standards for designing and implementing software architectures within the Computational Sciences Center of Excellence at Roche. It serves as a reference for architects, developers, and other stakeholders involved in software development projects.
+
 ---
 
 
 # Architecture Process
+
 ---
 
 Our architectural practice is enabled by the dedicated Architecture group and extended throughout the organization by our Architecture Catalysts, ensuring that we maintain architectural coherence while embedding strategic alignment across all Research and Early Development domains.
@@ -94,6 +101,7 @@ The Catalysts serve as the first point of contact between their respective depar
 # Contact
 
 For general inquiries or to connect with the broader organization’s representatives, please reach out to the [Architecture Catalyst Council](mailto:CSCOE-ARCHITECTURE-CATALYST@msxdl.roche.com).
+
 ---
 
 The Architecture Guardrails define the key boundaries and principles that guide the design, implementation, and evolution of solutions across the Computational Sciences Center of Excellence (CS-CoE). They ensure cohesion, interoperability, compliance, and sustainability across the REDs’ digital landscape while enabling innovation and agility.
@@ -157,6 +165,7 @@ If you have **feedback or want to contribute** you may join our [architecture sl
 - DISCUSS: ? **Documentation:** All architecture artifacts must be documented using OneDoc?
 
 - **Innovation:** Pilot innovative new solutions in controlled sandbox environments before scaling.
+
 ---
 
 These principles guide our ambitions for how we intend to design, build, scale, and evolve the system landscape across the Computational Sciences Center of Excellence (CS CoE). They reflect our shared architectural commitments and guide the direction we collectively agree to pursue; deviations should be reviewed through the exception process to ensure consistency and good decision-making.
@@ -328,8 +337,10 @@ FAIR data accelerates discovery, enables reproducibility, and can power AI. It e
 - Enable cross-domain interoperability
 
 - Improve reproducibility and accelerate AI development
+
 ---
 
 
 # Identity and Access Management
+
 ---

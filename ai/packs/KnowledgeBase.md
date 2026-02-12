@@ -1,5 +1,7 @@
 # Knowledge Base
+
 > Source: `src/asciidoc/modules/knowledge_base/pages/`
+
 ---
 
 # Objective
@@ -32,6 +34,7 @@ This documents aims to highlight the best practices around the miniminimal infor
 | Is workflow non-restricted or requires access? (if requires access, how to apply for access)                                                 |                                                                                                                  | M                      |
 | Any licensing regarding the tools used                                                                                                       |                                                                                                                  | O                      |
 | Any licensing regarding the data (for which the workflow was created; if this is unclear reach out to DWE circle)                            |                                                                                                                  | O                      |
+
 ---
 
 This document is aimed to give a quick overview of some of the useful tools and platforms for developers at Roche, so that new joiners can get started developing effectively. We’d recommend that you take this as a starting point, and ask around if a tool or platform is missing. The goal is to strike a balance between effective personal workflow, and gaining from critical mass working in a similar way.
@@ -145,6 +148,7 @@ An internal version of [StackOverflow](https://overflow.roche.com/)
 # Super comprehensive details
 
 See the [following link](https://code.roche.com/one-d-ai/technical-wiki/-/wikis/guidelines/Starter-Kit) for a tonne of extra useful information.
+
 ---
 
 Version 1.0 July 2022
@@ -170,6 +174,7 @@ Rule of thumb for internal system mean that the fix for a CVE should be deployed
 Inspiration for a CVE resolution process can be found in the strategy outlined by the [Minerva team](https://pred-scicomp.pages.roche.com/cloud/minerva/documentation/200-devops-guide/020-platform-operations/800-vulnerability-management.html).
 
 In the case of Java, plugins such as the OWASP and Maven dependency check can help to flag outdated dependencies when building the software. Outdated dependencies have an increased risk of containing a CVE.
+
 ---
 
 <div class="important">
@@ -285,7 +290,7 @@ Once the Enviroment is properly filled and selected, hit the `Get New Access Tok
 ``` json
 {
   "sub": "Roche unix user ID",
-  "aud": "{client_id}",
+  "aud": "",
   "name": "Full Name",
   "given_name": "First Name",
   "family_name": "Last Name",
@@ -625,6 +630,7 @@ To API owners: While this approach aims to benefit data scientists, it reduces v
 </tr>
 </tbody>
 </table>
+
 ---
 
 <div class="important">
@@ -1053,6 +1059,7 @@ We have several AD groups which are all starting with GLOpAppAuth\_ and which ar
 </tr>
 </tbody>
 </table>
+
 ---
 
 # What is a certificate
@@ -1314,6 +1321,7 @@ For any support regarding certificates, please contact:
 **Client Certificates**:
 
 - David Herzig (<david.herzig@roche.com>)
+
 ---
 
 # Introduction
@@ -1367,6 +1375,7 @@ If you are a Windows user and encounter issues installing or configuring the Jet
 - Click Activate.
 
 For more detailed instructions, please refer to the official JetBrains [documentation](https://www.jetbrains.com/help/ide-services/Activating_a_license.html#to-activate-a-license).
+
 ---
 
 Low-code/no-code development platforms are types of visual software development environments that allow enterprise developers and citizen developers to drag and drop application components, connect them together, and create mobile or web apps. These platforms are often discussed synonymous with the development methods they embody.
@@ -1408,6 +1417,7 @@ Together, these three recommendations create a clear “right tool for the job�
 - [Roche "Automation & Rapid Application Development" Team gSite](https://sites.google.com/roche.com/a-rad/home)
 
 - [Roche "Automation & Rapid Application Development" Team Wiki](https://rochewiki.roche.com/confluence/pages/viewpage.action?spaceKey=LOWCODE&title=Build+Your+Application)
+
 ---
 
 # Overall policy
@@ -1512,6 +1522,7 @@ You can also consult the overal license compliance status of your repository and
 <figure>
 <img src="../images/repo_license_compliance.png" alt="repo license compliance" />
 </figure>
+
 ---
 
 # What is the Roche Renovate bot
@@ -1629,8 +1640,6 @@ repositories:
   artifacts:
     paths:
       - repositories.json
-
-
 renovate:
   image:
     name: [Renovate image]
@@ -1656,4 +1665,5 @@ renovate:
     - echo $RENOVATE_ARGS
     - renovate $RENOVATE_ARGS
 ```
+
 ---
