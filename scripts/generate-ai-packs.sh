@@ -11,32 +11,71 @@ OUT_DIR="ai/packs"
 mkdir -p "$OUT_DIR"
 
 # Convert AsciiDoc to Markdown
+# Convert AsciiDoc to Markdown
 convert_adoc_to_md() {
     local input_file="$1"
     local content
     
+    # Try asciidoctor + pandoc first
     if command -v asciidoctor &> /dev/null && command -v pandoc &> /dev/null; then
         content=$(asciidoctor -b docbook -o - "$input_file" 2>/dev/null | \
                   pandoc -f docbook -t gfm --wrap=none 2>/dev/null) || content=""
     fi
     
+    # Fallback to sed-based conversion if pandoc failed or not available
     if [ -z "$content" ]; then
         content=$(cat "$input_file" | sed -E '
+            # Remove AsciiDoc directives and includes
             /^:.*:/d
             /^include::/d
+            
+            # Convert headings (= to #)
             s/^= (.*)$/# \1/
             s/^== (.*)$/## \1/
             s/^=== (.*)$/### \1/
             s/^==== (.*)$/#### \1/
+            
+            # Remove xref links, keep link text
             s/xref:[^[]*\[([^\]]*)\]/\1/g
+            
+            # Convert simple table markers
             s/^\|===.*$//
+            
+            # Convert NOTE blocks
             s/^\[NOTE\]$/> **Note**/
             s/^--$//
         ')
     fi
     
+    # Post-process: Clean up content (applies to both pandoc and sed output)
+    content=$(echo "$content" | sed -E '
+        # Remove markdown image references (broken paths)
+        s/!\[[^\]]*\]\([^)]*\)//g
+        
+        # Remove broken markdown links but keep text: [text](broken.xml) -> text
+        s/\[([^\]]*)\]\([^)]*\.(xml|adoc)\)/\1/g
+        
+        # Remove emojis commonly used in ADRs
+        s/📗//g
+        s/ℹ️//g
+        s/🌈//g
+        s/🤝//g
+        s/📌//g
+        s/✅//g
+        s/❌//g
+        s/⚠️//g
+        
+        # Remove empty lines left by image removal (multiple blank lines -> single)
+        /^$/N
+        /^\n$/d
+        
+        # Clean up any leftover AsciiDoc artifacts
+        s/\{[a-zA-Z_-]*\}//g
+    ')
+    
     echo "$content"
 }
+
 
 # Generate Governance.md
 echo "Generating Governance.md..."
